@@ -1,0 +1,2201 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  fontset=windows]{ctexart}
+\usepackage{xcolor}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={交错处理 DID、匹配方法与 Monte Carlo 模拟研究报告},
+  pdfauthor={张竞夫},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{交错处理 DID、匹配方法与 Monte Carlo 模拟研究报告}
+\author{张竞夫}
+\date{2026-06-05}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+
+\textbf{姓名：张竞夫 2025103057}\\
+\textbf{课程：Empirical Methods / Advanced Econometrics}\\
+\textbf{作业：Staggered DID, Matching and Monte Carlo Simulation}\\
+\textbf{提交内容：研究报告}\\
+\textbf{日期：2026 年 6 月}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{摘要}\label{ux6458ux8981}
+
+本文围绕交错处理设定下不同 DID 估计方法的表现展开 Monte Carlo
+模拟研究。首先，本文构造了一个多期平衡面板数据生成过程，设定 \(N=500\)
+个个体和 \(T=10\) 个时期，并设置三个处理批次 \(G_i=4,6,8\) 以及一组
+never-treated 单位。DGP 同时包含连续协变量 \(X_1\)、离散协变量
+\(X_2\)、个体固定效应、共同时间趋势、可观测趋势异质性和不可观测时变混淆因素。为了系统考察不同估计方法的适用条件，本文设计了四个场景：基准随机处理情形、可观测选择偏误情形、不可观测时变混淆情形，以及动态处理效应和
+cohort 异质性情形。
+
+在估计方法方面，本文比较了传统双向固定效应模型（TWFE）、同期
+PSM-DID、滚动 PSM-DID、合成控制法（SCM）、Callaway and Sant'Anna DID
+以及 Sun and Abraham 事件研究估计。Monte Carlo 主模拟重复 1000
+次，主要报告 Bias、RMSE、Median Absolute Error、95\%
+置信区间覆盖率、平均标准误与 Monte Carlo
+标准差等指标。同时，本文绘制事件研究图和偏误-方差权衡图，并进行 cohort
+异质性和协变量子群异质性分析。
+
+模拟结果表明，在平行趋势成立且处理效应同质的基准场景中，各类方法总体表现较好；当处理分配与可观测协变量相关时，匹配类方法和
+CSDID
+能够明显降低偏误；当存在不可观测时变混淆时，各类方法均难以完全恢复真实
+ATT；当存在动态处理效应和 cohort 异质性时，传统 TWFE
+可能出现系统性偏误，而 CSDID
+和事件研究方法更能反映交错处理下的动态效应结构。最后，本文对 Bailey,
+Sun, and Timpe (2021) 关于 Head Start
+长期影响的研究进行方法层面的批判性评价，讨论现代 DID
+方法在实际政策评估中的必要性。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{引言}\label{ux5f15ux8a00}
+
+DID
+是政策评估和应用微观计量经济学中最常用的识别方法之一。在最简单的两期两组设定中，DID
+通过比较处理组和控制组在政策前后的结果变化来识别平均处理效应。其核心识别假设是平行趋势假设，即如果没有政策处理，处理组和控制组的结果变化趋势应当相同。
+
+然而，现实中的政策实施往往不是一次性发生的。很多政策会在不同地区、不同机构或不同群体中逐步推广。例如，教育政策可能在不同县逐步
+rollout，最低工资政策可能在不同州分期实施，医疗保险扩展也可能在不同年份覆盖不同人群。这类设定被称为交错处理，即
+staggered treatment
+adoption。在交错处理设定下，不同个体或地区的首次处理时间不同，因此传统
+TWFE DID 估计量可能不再具有简单的因果解释。
+
+近年来的 DID 方法文献指出，当处理效应存在动态变化或 cohort
+异质性时，TWFE
+可能将已经接受处理的单位错误地作为尚未接受处理单位的控制组，从而产生不合适的比较。此时，TWFE
+估计量可以被理解为多个 \(2\times 2\) DID
+比较的加权平均，而部分权重和比较对象可能并不符合研究者真正关心的因果参数。因此，在交错处理设定下，仅仅报告一个
+TWFE 系数可能是不够的。
+
+本文的目标是通过 Monte Carlo
+模拟系统比较不同估计方法在交错处理环境中的表现。与单纯讨论理论不同，模拟研究可以清楚展示不同
+DGP 条件下估计量的偏误、方差和推断有效性。本文特别关注以下几个问题。
+
+第一，在平行趋势成立且存在 never-treated 单位时，现代 DID
+方法是否能够恢复真实 ATT？
+
+第二，当处理分配与可观测协变量相关时，匹配 DID 是否能够改善估计表现？
+
+第三，当存在不可观测时变混淆时，各类方法是否仍然可靠？
+
+第四，在动态处理效应和 cohort 异质性存在时，传统 TWFE 的偏误来源是什么？
+
+第五，在实际政策研究中，如何根据这些模拟结果评价已有论文的识别策略？
+
+为回答这些问题，本文设计了四个 DGP 场景，并在每个场景下重复模拟 1000
+次。本文比较的估计方法包括 TWFE、同期 PSM-DID、滚动 PSM-DID、SCM、CSDID
+和 Sun and Abraham
+事件研究估计。本文的重点不是简单判断``哪个方法最好''，而是解释不同方法在不同识别条件下为什么表现不同，以及这些结果对实际政策评估研究有什么启示。
+
+\section{DGP 设计}\label{dgp-ux8bbeux8ba1}
+
+本节介绍本文 Monte Carlo 模拟中使用的数据生成过程（Data Generating
+Process, DGP）。根据作业要求，DGP
+需要包含多期面板结构、多个处理批次、至少两个可观测协变量、动态处理效应、趋势异质性，并且需要明确写出处理分配机制、潜在结果方程和观测结果方程。
+
+本文在 \texttt{main.ipynb} 中将样本量设定为 \(N=500\)，时间期数设定为
+\(T=10\)，并构造三个处理批次 \(G_i=4,6,8\) 以及一组 never-treated
+个体。该设定既满足作业对面板结构的最低要求，也能够模拟现实中政策逐步推广的交错处理情形。
+
+\subsection{面板结构与协变量设定}\label{ux9762ux677fux7ed3ux6784ux4e0eux534fux53d8ux91cfux8bbeux5b9a}
+
+本文构造一个平衡面板数据集。个体维度为：
+
+\[
+i=1,\ldots,N
+\]
+
+时间维度为：
+
+\[
+t=1,\ldots,T
+\]
+
+正式模拟中设定：
+
+\[
+N=500,\quad T=10
+\]
+
+因此，每一份模拟数据包含：
+
+\[
+500\times 10=5000
+\]
+
+条观测。
+
+每个个体具有两个可观测协变量。第一个协变量是连续变量：
+
+\[
+X_{1i}\sim N(0,1)
+\]
+
+第二个协变量是二元离散变量：
+
+\[
+X_{2i}\sim Bernoulli(0.5)
+\]
+
+其中，\(X_{1i}\)
+可以理解为个体层面的连续特征，例如收入能力、基础能力或地区经济条件；\(X_{2i}\)
+可以理解为个体是否属于某一类别，例如是否处于某类地区或是否具有某种二元属性。
+
+此外，DGP 中还生成了两个不可观测个体特征：
+
+\[
+\alpha_i\sim N(0,1)
+\]
+
+\[
+\eta_i\sim N(0,1)
+\]
+
+其中，\(\alpha_i\)
+表示个体固定效应，用于刻画不随时间变化的个体异质性；\(\eta_i\)
+用于在部分场景中构造不可观测时变混淆因素，使处理分配和未处理结果趋势同时受到不可观测因素影响。
+
+\subsection{处理分配机制}\label{ux5904ux7406ux5206ux914dux673aux5236}
+
+本文设置三个处理批次和一个 never-treated 对照组。首次处理时间 \(G_i\)
+的取值包括：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+首次处理时间 & 含义 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(G_i=4\) & 第 4 期开始接受处理 \\
+\(G_i=6\) & 第 6 期开始接受处理 \\
+\(G_i=8\) & 第 8 期开始接受处理 \\
+\(G_i=0\) & 从未接受处理 \\
+\end{longtable}
+}
+
+处理状态定义为：
+
+\[
+D_{it}=1(G_i>0,\ t\geq G_i)
+\]
+
+也就是说，如果个体在第 \(G_i\) 期首次接受处理，那么从第 \(G_i\)
+期开始，其处理状态为 1；在处理发生之前，处理状态为 0。对于 never-treated
+个体，所有时期的处理状态始终为 0。
+
+为了构造事件研究图，本文还定义相对处理时间：
+
+\[
+rel\_time_{it}=t-G_i
+\]
+
+其中，\(rel\_time=0\) 表示处理发生当期，\(rel\_time<0\)
+表示处理前时期，\(rel\_time>0\) 表示处理后时期。在事件研究估计中，本文将
+\(rel\_time=-1\) 作为基准期。
+
+\subsection{潜在结果方程}\label{ux6f5cux5728ux7ed3ux679cux65b9ux7a0b}
+
+本文首先定义未处理潜在结果 \(Y_{it}(0)\)。其基本结构为：
+
+\[
+Y_{it}(0)
+=
+2+\alpha_i+\lambda_t+0.5X_{1i}+0.8X_{2i}
++\text{TrendHeterogeneity}_{it}
++\varepsilon_{it}
+\]
+
+其中，\(\alpha_i\) 表示个体固定效应，\(\lambda_t\)
+表示共同时间趋势。本文设定共同时间趋势为：
+
+\[
+\lambda_t=0.2t
+\]
+
+误差项 \(\varepsilon_{it}\) 表示随机扰动。可观测协变量 \(X_1\) 和
+\(X_2\) 直接影响结果水平，使不同个体在未处理状态下的平均结果存在差异。
+
+处理后潜在结果定义为：
+
+\[
+Y_{it}(1)=Y_{it}(0)+\tau_{it}
+\]
+
+其中，\(\tau_{it}\) 表示处理效应。最终观测结果为：
+
+\[
+Y_{it}=Y_{it}(0)+D_{it}\tau_{it}
+\]
+
+当 \(D_{it}=0\) 时，个体的观测结果等于未处理潜在结果；当 \(D_{it}=1\)
+时，个体的观测结果等于未处理潜在结果加上处理效应。
+
+\subsection{四个 DGP 场景}\label{ux56dbux4e2a-dgp-ux573aux666f}
+
+为了系统考察不同估计方法在不同识别条件下的表现，本文设计了四个场景。四个场景分别对应基准情形、可观测选择偏误、不可观测时变混淆，以及动态处理效应和
+cohort 异质性。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+场景
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+目的
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+关键设定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+场景 A & 基准情形 & 随机处理分配，平行趋势成立，处理效应同质 \\
+场景 B & 可观测选择偏误 & 处理分配与 \(X_1\)、\(X_2\)
+相关，协变量也影响结果趋势 \\
+场景 C & 不可观测时变混淆 & 处理分配与不可观测因素 \(\eta_i\) 相关，且
+\(\eta_i\) 影响未处理结果趋势 \\
+场景 D & 动态效应与 cohort 异质性 & 处理效应随事件时间衰减，且不同
+cohort 的初始处理效应不同 \\
+\end{longtable}
+}
+
+\subsubsection{场景
+A：基准情形}\label{ux573aux666f-aux57faux51c6ux60c5ux5f62}
+
+场景 A 是最理想的 DID
+设定。处理分配是随机的，平行趋势成立，并且所有已处理观测的真实处理效应相同：
+
+\[
+\tau_{it}=2
+\]
+
+该场景的作用是检验在识别假设成立、处理效应同质的条件下，不同估计方法是否能够恢复真实
+ATT。理论上，在这个场景中，TWFE、匹配 DID 和现代 DID
+方法都应当表现较好。
+
+\subsubsection{场景
+B：可观测选择偏误}\label{ux573aux666f-bux53efux89c2ux6d4bux9009ux62e9ux504fux8bef}
+
+场景 B 中，处理分配与可观测协变量 \(X_1\) 和 \(X_2\)
+有关。具体而言，\(X_1\) 较大或 \(X_2=1\)
+的个体更可能较早进入处理。同时，\(X_1\) 和 \(X_2\)
+也影响未处理结果趋势。
+
+这意味着，处理组和控制组不仅在结果水平上不同，也可能在结果变化趋势上不同。如果不控制或匹配这些协变量，传统
+DID 或 TWFE 可能把协变量导致的趋势差异误认为处理效应。
+
+场景 B 中真实处理效应仍然设定为：
+
+\[
+\tau_{it}=2
+\]
+
+该场景主要用于检验同期 PSM-DID、滚动 PSM-DID 和控制协变量的 CSDID
+是否能够缓解由可观测选择导致的偏误。
+
+\subsubsection{场景
+C：不可观测时变混淆}\label{ux573aux666f-cux4e0dux53efux89c2ux6d4bux65f6ux53d8ux6df7ux6dc6}
+
+场景 C
+进一步引入不可观测时变混淆。处理分配不仅与可观测协变量有关，还与不可观测因素
+\(\eta_i\) 有关。同时，\(\eta_i\) 也影响未处理结果趋势。
+
+因此，在场景 C 中，即使研究者控制了 \(X_1\) 和
+\(X_2\)，仍然无法完全控制影响处理分配和潜在结果趋势的不可观测因素。此时，平行趋势假设被破坏。
+
+场景 C 中真实处理效应仍然设定为：
+
+\[
+\tau_{it}=2
+\]
+
+该场景用于说明，匹配方法和现代 DID
+方法虽然可以改善交错处理下的错误比较问题，但不能自动解决不可观测时变混淆。换言之，估计方法的改进并不能替代识别假设本身。
+
+\subsubsection{场景 D：动态效应与 cohort
+异质性}\label{ux573aux666f-dux52a8ux6001ux6548ux5e94ux4e0e-cohort-ux5f02ux8d28ux6027}
+
+场景 D 中，处理分配是随机的，但处理效应具有动态衰减和 cohort
+异质性。具体设定为：
+
+\[
+\tau_{it}=\gamma_g\exp[-0.25(t-G_i)]
+\]
+
+其中，\(\gamma_g\) 是不同处理批次的初始处理效应。本文设定：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+cohort & 初始处理效应 \(\gamma_g\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(G_i=4\) & 3.0 \\
+\(G_i=6\) & 2.0 \\
+\(G_i=8\) & 1.2 \\
+\end{longtable}
+}
+
+因此，在场景 D 中，不同 cohort 的处理效应不同，并且同一个 cohort
+的处理效应会随着事件时间逐渐下降。该场景用于检验传统 TWFE
+在动态处理效应和 cohort 异质性下是否会产生偏误，也用于展示 CSDID 和
+Sun-Abraham 事件研究方法在处理动态异质效应时的优势。
+
+\subsection{DGP 的统计验证}\label{dgp-ux7684ux7edfux8ba1ux9a8cux8bc1}
+
+在正式比较不同估计方法之前，本文首先对 DGP 本身进行 Monte Carlo
+验证。具体做法是重复生成 1000
+份模拟数据，并检查每一次生成的数据是否满足作业要求。
+
+验证结果表明，每次模拟均包含 500 个个体和 10 个时期，总观测数为
+5000。每个场景中均包含四组个体：never-treated 组、第 4 期处理组、第 6
+期处理组和第 8
+期处理组。由于本文将四组个体设置为等比例分配，因此每组大约包含 125
+个个体。
+
+真实 ATT 的验证结果也符合 DGP 设定。在场景 A、B、C 中，真实处理效应均为
+2，因此总体真实 ATT 也等于 2。在场景 D 中，由于处理效应具有动态衰减和
+cohort 异质性，所有处理后时期上的平均真实 ATT 约为
+1.368。这个数值不同于处理发生当期的平均效应，因为场景 D
+中处理效应会随着事件时间逐渐衰减。
+
+这一验证说明，本文构造的 DGP
+满足作业要求，并能够分别对应不同识别条件下的典型问题：基准平行趋势、可观测选择、不可观测混淆，以及动态异质处理效应。
+
+\section{估计方法}\label{ux4f30ux8ba1ux65b9ux6cd5}
+
+本节介绍本文在 Monte Carlo
+模拟中比较的估计方法。根据作业要求，本文需要包含传统 DID
+基准方法、至少两种匹配或合成策略，以及至少两种现代 DID
+估计方法。因此，本文在 \texttt{main.ipynb} 中实现并比较了以下方法：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+方法类别 & 具体方法 & 在本文中的用途 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+传统 DID 基准 & TWFE & 作为基准估计方法 \\
+匹配类方法 & 同期 PSM-DID & 使用处理前一期和处理当期构造 DID \\
+匹配类方法 & 滚动 PSM-DID & 对每个处理后时期分别构造匹配 DID \\
+合成类方法 & SCM & 作为补充方法展示，不纳入 Monte Carlo 主表 \\
+现代 DID & Callaway and Sant'Anna DID & 估计交错处理下的总体 ATT \\
+现代 DID & Sun and Abraham 事件研究 & 估计动态处理效应路径 \\
+\end{longtable}
+}
+
+其中，Monte Carlo 主比较表主要包含 TWFE、同期 PSM-DID、滚动 PSM-DID 和
+CSDID。SCM 作为补充方法展示和条件讨论使用；Sun and Abraham
+方法主要用于事件研究图，而不是压缩成单一 ATT 主表。
+
+\subsection{TWFE：传统双向固定效应
+DID}\label{twfeux4f20ux7edfux53ccux5411ux56faux5b9aux6548ux5e94-did}
+
+传统双向固定效应模型是交错处理研究中最常见的基准方法。本文使用如下模型：
+
+\[
+Y_{it}=\alpha_i+\lambda_t+\beta D_{it}+\varepsilon_{it}
+\]
+
+其中，\(\alpha_i\) 表示个体固定效应，\(\lambda_t\)
+表示时间固定效应，\(D_{it}\) 表示处理状态。系数 \(\beta\) 是 TWFE
+估计得到的平均处理效应。
+
+TWFE
+的优点是形式简单、容易实现，并且在处理效应同质且平行趋势成立时可以较好估计
+ATT。因此，本文将 TWFE 作为所有方法的基准。
+
+但是，在交错处理设定下，TWFE 可能存在两个主要问题。
+
+第一，TWFE 会混合多个处理批次和多个时期的比较。当不同 cohort
+在不同时间接受处理时，TWFE 不再只是简单比较处理组和 never-treated
+组，而是会隐含使用 already-treated units 作为其他处理组的对照组。
+
+第二，当处理效应存在动态变化或 cohort 异质性时，TWFE
+估计量可能不再对应清晰的平均处理效应。特别是在场景 D
+中，处理效应随事件时间衰减且不同 cohort 的初始效应不同，因此 TWFE
+可能产生系统性偏误。
+
+因此，本文使用 TWFE
+的目的不是将其视为最优方法，而是将其作为传统基准，用来比较现代 DID
+和匹配方法在不同 DGP 条件下的改进程度。
+
+\subsection{同期 PSM-DID}\label{ux540cux671f-psm-did}
+
+同期 PSM-DID 是本文实现的第一种匹配 DID
+方法。该方法的核心思想是：对于每一个处理批次，只比较处理前一期和处理发生当期，并在可观测协变量上进行倾向得分匹配。
+
+具体而言，对于某个处理批次 \(g\)，本文取处理前一期 \(g-1\) 和处理当期
+\(g\)，构造结果变化：
+
+\[
+\Delta Y_i=Y_{ig}-Y_{i,g-1}
+\]
+
+然后根据协变量 \(X_1\) 和 \(X_2\) 估计个体属于当前处理 cohort
+的倾向得分，并在处理组和 clean control
+之间进行匹配。匹配后，使用处理组和匹配控制组的结果变化差异估计处理效应。
+
+同期 PSM-DID
+的优点是可以缓解由可观测协变量不平衡导致的偏误。特别是在场景 B
+中，处理分配与 \(X_1\) 和 \(X_2\) 相关，如果不进行匹配，TWFE
+可能将协变量导致的趋势差异误认为处理效应。同期 PSM-DID 通过在 \(X_1\) 和
+\(X_2\) 上匹配，可以改善处理组和控制组的可比性。
+
+但是，同期 PSM-DID
+也有局限。由于它只比较处理前一期和处理当期，因此它估计的是``处理刚发生时''的
+ATT，而不是所有处理后时期的平均 ATT。在处理效应动态变化的场景 D 中，同期
+PSM-DID 的目标参数和 TWFE、CSDID
+等使用所有处理后时期的方法并不完全相同。因此，在解释场景 D
+的结果时，需要注意不同方法的目标参数差异。
+
+\subsection{滚动 PSM-DID}\label{ux6edaux52a8-psm-did}
+
+滚动 PSM-DID 是本文实现的第二种匹配 DID 方法。与同期 PSM-DID 不同，滚动
+PSM-DID 不只关注处理发生当期，而是对每一个处理后时期分别构造 DID 比较。
+
+对于某个处理批次 \(g\) 和某个处理后时期 \(t\geq g\)，本文使用处理前一期
+\(g-1\) 作为基准期，构造结果变化：
+
+\[
+\Delta Y_{it}=Y_{it}-Y_{i,g-1}
+\]
+
+然后在当前处理组和 clean control
+之间进行倾向得分匹配，估计对应的处理效应。最后，本文将不同 cohort 和不同
+post period 的估计结果按照处理组样本量进行加权汇总，得到滚动 PSM-DID
+的总体 ATT。
+
+滚动 PSM-DID
+的优势在于，它更接近交错处理设定下的动态比较逻辑。它避免只看处理当期，而是利用所有处理后时期的信息。因此，在存在动态处理效应或不同处理后时期效应不同的情况下，滚动
+PSM-DID 比同期 PSM-DID 更接近总体 ATT 的目标。
+
+在本文的 DGP 中，滚动 PSM-DID 主要用于检验命题
+2：当平行趋势只有在条件于可观测协变量 \(X_i\) 时才成立，匹配 DID
+是否能够恢复更好的估计表现。尤其在场景 B 中，滚动 PSM-DID 应当比无条件
+TWFE 具有更小的偏误。
+
+\subsection{合成控制法 SCM}\label{ux5408ux6210ux63a7ux5236ux6cd5-scm}
+
+合成控制法是本文实现的补充方法。SCM
+的核心思想不是简单地在协变量上寻找相似个体，而是利用 donor pool
+中多个未处理单位的加权组合，构造一个在处理前结果路径上尽可能接近处理组的``合成控制组''。
+
+在本文中，SCM 的实现思路如下。对于每一个场景和每一个处理
+cohort，本文将该 cohort
+的处理组在每一期的结果取平均，构造一个聚合处理单位；然后使用
+never-treated 个体作为 donor
+pool；接着利用处理前结果路径拟合合成控制组；最后计算处理后时期中处理组与合成控制组之间的平均
+gap，将其作为 SCM 的 ATT 估计。
+
+SCM
+的优势在于它直接关注处理前结果路径的相似性。当处理单位数量较少、处理前时期较长、donor
+pool 足够丰富且存在与处理组趋势相似的控制单位时，SCM
+可能优于传统匹配方法。
+
+但是，SCM 也有明显限制。第一，SCM
+通常不直接提供常规解析标准误，因此不适合和 TWFE、PSM-DID、CSDID
+一起直接比较 coverage。第二，SCM 的表现高度依赖 donor pool
+质量和处理前时期数量。对于较早接受处理的 cohort，例如
+\(G_i=4\)，处理前只有 3 期，合成控制组的拟合可能不够稳定。因此，本文将
+SCM 作为单次样本补充方法和条件讨论方法，而不纳入 Monte Carlo 主比较表。
+
+\subsection{Callaway and Sant'Anna DID}\label{callaway-and-santanna-did}
+
+Callaway and Sant'Anna DID 是本文使用的第一种现代 DID
+方法。该方法的核心思想是，在交错处理设定下，不直接估计单一 TWFE
+系数，而是先估计组别-时间平均处理效应：
+
+\[
+ATT(g,t)
+\]
+
+其中，\(g\) 表示首次处理时间，\(t\) 表示具体时期。\(ATT(g,t)\) 表示第
+\(g\) 期处理组在时期 \(t\) 的平均处理效应。
+
+该方法的优势在于，它避免了传统 TWFE 中 already-treated units
+被错误用作控制组的问题。对于每一个处理 cohort 和每一个时期，CSDID
+可以使用 never-treated 或 not-yet-treated 单位作为 clean
+controls，从而构造更清晰的比较。
+
+在本文中，CSDID 的估计中控制了 \(X_1\) 和 \(X_2\)。这使得 CSDID
+不仅能够处理交错处理问题，也能够在一定程度上调整可观测协变量差异。因此，本文预期
+CSDID 在场景 A 和场景 D 中表现较好；在场景 B
+中，如果协变量调整有效，CSDID 应当比 TWFE 偏误更小；但在场景 C
+中，由于存在不可观测时变混淆，CSDID 仍可能产生明显偏误。
+
+\subsection{Sun and Abraham
+事件研究估计}\label{sun-and-abraham-ux4e8bux4ef6ux7814ux7a76ux4f30ux8ba1}
+
+Sun and Abraham 方法是本文使用的第二种现代 DID 方法。与 CSDID
+主要报告总体 ATT 不同，Sun and Abraham
+方法主要用于估计事件时间上的动态处理效应。
+
+本文定义事件时间为：
+
+\[
+rel\_time_{it}=t-G_i
+\]
+
+其中，\(rel\_time<0\) 表示处理前时期，\(rel\_time=0\)
+表示处理发生当期，\(rel\_time>0\) 表示处理后时期。在事件研究图中，本文将
+\(rel\_time=-1\) 作为基准期。
+
+Sun and Abraham 方法通过构造 cohort-specific 的事件时间交互项，避免传统
+TWFE event study
+在交错处理设定下的错误比较问题。本文使用该方法估计处理前后各期的动态效应，并绘制事件研究图。
+
+事件研究图有两个重要作用。第一，处理前 lead
+系数可以用于检验平行趋势。如果处理前系数明显偏离
+0，说明处理组和控制组在处理前已经存在不同趋势。第二，处理后 lag
+系数可以展示处理效应随事件时间的变化。在场景 D 中，DGP
+明确设定处理效应动态衰减，因此事件研究图应当显示处理后系数逐渐下降。
+
+\subsection{方法比较逻辑}\label{ux65b9ux6cd5ux6bd4ux8f83ux903bux8f91}
+
+本文并不是简单判断哪一种方法在所有场景下``最好''，而是关注不同方法在不同识别条件下的适用性。
+
+在场景 A 中，平行趋势成立且处理效应同质，各类方法理论上都应当表现较好。
+
+在场景 B 中，处理分配与可观测协变量相关，因此匹配类方法和控制协变量的
+CSDID 应当比无条件 TWFE 更有优势。
+
+在场景 C 中，存在不可观测时变混淆，平行趋势假设被破坏。因此，即使是现代
+DID 或匹配方法，也可能无法完全恢复真实 ATT。
+
+在场景 D 中，处理效应具有动态衰减和 cohort 异质性。传统 TWFE
+可能由于错误比较和异质处理效应而产生偏误，而 CSDID 和 Sun-Abraham
+方法更适合处理交错处理下的动态异质结构。
+
+因此，本文的比较重点是解释不同方法在不同条件下为什么表现不同，而不是机械地报告某一个方法在所有场景下都更好。
+
+\section{Monte Carlo
+模拟结果}\label{monte-carlo-ux6a21ux62dfux7ed3ux679c}
+
+本节报告 Monte Carlo
+模拟的主要结果。根据作业要求，模拟结果需要同时包含表格和图形，并重点展示估计准确性、推断有效性和动态效应估计。因此，本文主要报告以下几类结果：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Monte Carlo 主结果表：包括 Bias、RMSE、Median Absolute Error、Mean
+  SE、Monte Carlo SD 和 Coverage；
+\item
+  覆盖率表：单独展示不同方法在四个场景下的 95\% 置信区间覆盖率；
+\item
+  标准误与 Monte Carlo 标准差比较表；
+\item
+  偏误-方差权衡图；
+\item
+  事件研究图。
+\end{enumerate}
+
+本文的 Monte Carlo 主模拟重复 1000 次。每次模拟中，本文重新生成一份 DGP
+数据，并在同一份数据上运行 TWFE、同期 PSM-DID、滚动 PSM-DID 和
+CSDID。SCM 作为补充方法展示和条件讨论使用，不纳入 Monte Carlo 主表；Sun
+and Abraham 方法主要用于绘制事件研究图。
+
+\subsection{评价指标}\label{ux8bc4ux4ef7ux6307ux6807}
+
+本文使用以下指标衡量估计方法表现。
+
+第一，Bias 衡量估计值与真实 ATT 之间的平均差异：
+
+\[
+Bias = E(\hat{\theta}-\theta)
+\]
+
+第二，RMSE 衡量估计误差的均方根：
+
+\[
+RMSE=\sqrt{E[(\hat{\theta}-\theta)^2]}
+\]
+
+第三，Median Absolute Error 衡量估计误差绝对值的中位数：
+
+\[
+MedAE = Median(|\hat{\theta}-\theta|)
+\]
+
+第四，Coverage 衡量 95\% 置信区间覆盖真实 ATT 的比例：
+
+\[
+Coverage = Pr(\theta \in [\hat{\theta}-1.96SE,\hat{\theta}+1.96SE])
+\]
+
+第五，Mean SE 和 Monte Carlo SD
+用于比较方法报告的标准误是否能够反映估计量在重复模拟中的真实波动。如果
+Mean SE 与 Monte Carlo SD
+接近，说明标准误估计较为可靠；如果二者差异较大，则说明推断可能存在问题。
+
+\subsection{Monte Carlo
+主结果表}\label{monte-carlo-ux4e3bux7ed3ux679cux8868}
+
+表 1a 和表 1b 报告了四个场景下不同估计方法的 Monte Carlo
+主结果。为了提高 PDF 中表格的可读性，本文将主结果拆分为两个部分：表 1a
+报告估计准确性指标，包括 True ATT、Mean Estimate、Bias、RMSE 和 Median
+Absolute Error；表 1b 报告推断有效性指标，包括 Mean SE、Monte Carlo SD
+和 Coverage。
+
+\subsubsection{表 1a：Monte Carlo
+估计准确性结果}\label{ux8868-1amonte-carlo-ux4f30ux8ba1ux51c6ux786eux6027ux7ed3ux679c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule\noalign{}
+场景-方法 & True ATT & Mean Estimate & Bias & RMSE & MedAE \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A-TWFE & 2.000 & 1.999 & -0.001 & 0.053 & 0.036 \\
+A-PSM-DID & 2.000 & 1.999 & -0.001 & 0.125 & 0.084 \\
+A-Rolling PSM & 2.000 & 2.000 & -0.000 & 0.101 & 0.070 \\
+A-CSDID & 2.000 & 2.000 & -0.000 & 0.083 & 0.054 \\
+B-TWFE & 2.000 & 2.392 & 0.392 & 0.396 & 0.391 \\
+B-PSM-DID & 2.000 & 2.004 & 0.004 & 0.227 & 0.156 \\
+B-Rolling PSM & 2.000 & 2.088 & 0.088 & 0.313 & 0.193 \\
+B-CSDID & 2.000 & 2.008 & 0.008 & 0.260 & 0.165 \\
+C-TWFE & 2.000 & 3.140 & 1.140 & 1.142 & 1.138 \\
+C-PSM-DID & 2.000 & 2.294 & 0.294 & 0.322 & 0.296 \\
+C-Rolling PSM & 2.000 & 3.474 & 1.474 & 1.479 & 1.472 \\
+C-CSDID & 2.000 & 3.473 & 1.473 & 1.477 & 1.475 \\
+D-TWFE & 1.368 & 1.713 & 0.345 & 0.349 & 0.345 \\
+D-PSM-DID & 2.067 & 2.067 & 0.000 & 0.125 & 0.086 \\
+D-Rolling PSM & 1.368 & 1.368 & -0.000 & 0.102 & 0.069 \\
+D-CSDID & 1.368 & 1.368 & -0.000 & 0.080 & 0.055 \\
+\end{longtable}
+}
+
+\subsubsection{表 1b：Monte Carlo
+推断有效性结果}\label{ux8868-1bmonte-carlo-ux63a8ux65adux6709ux6548ux6027ux7ed3ux679c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrr@{}}
+\toprule\noalign{}
+场景-方法 & Mean SE & MC SD & Coverage \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A-TWFE & 0.051 & 0.053 & 0.944 \\
+A-PSM-DID & 0.124 & 0.125 & 0.951 \\
+A-Rolling PSM & 0.058 & 0.101 & 0.753 \\
+A-CSDID & 0.081 & 0.083 & 0.937 \\
+B-TWFE & 0.057 & 0.055 & 0.000 \\
+B-PSM-DID & 0.215 & 0.227 & 0.913 \\
+B-Rolling PSM & 0.174 & 0.301 & 0.712 \\
+B-CSDID & 0.157 & 0.260 & 0.759 \\
+C-TWFE & 0.088 & 0.072 & 0.000 \\
+C-PSM-DID & 0.128 & 0.130 & 0.357 \\
+C-Rolling PSM & 0.068 & 0.126 & 0.000 \\
+C-CSDID & 0.109 & 0.106 & 0.000 \\
+D-TWFE & 0.058 & 0.051 & 0.000 \\
+D-PSM-DID & 0.124 & 0.125 & 0.950 \\
+D-Rolling PSM & 0.058 & 0.102 & 0.740 \\
+D-CSDID & 0.081 & 0.080 & 0.955 \\
+\end{longtable}
+}
+
+表 1a 和表 1b 显示，不同方法在不同 DGP 场景下的表现差异明显。
+
+在场景 A 中，处理分配随机、平行趋势成立且处理效应同质，因此各类方法的
+Bias 都接近 0。TWFE、PSM-DID、滚动 PSM-DID 和 CSDID 都能够较好恢复真实
+ATT。不过，从推断角度看，滚动 PSM-DID 的 Coverage 只有 0.753，明显低于
+0.95，说明该方法在本文设定下虽然点估计接近真实值，但标准误可能低估了估计量的真实波动。
+
+在场景 B 中，处理分配与可观测协变量相关。TWFE 的 Bias 为
+0.392，说明传统无条件 DID 会明显高估真实处理效应。相比之下，PSM-DID 的
+Bias 仅为 0.004，CSDID 的 Bias 为
+0.008，说明匹配和协变量调整能够显著缓解可观测选择偏误。滚动 PSM-DID 的
+Bias 为 0.088，虽然也小于 TWFE，但表现不如同期 PSM-DID 和 CSDID。
+
+在场景 C 中，存在不可观测时变混淆。TWFE 的 Bias 达到 1.140，滚动 PSM-DID
+和 CSDID 的 Bias 也分别达到 1.474 和
+1.473，说明这些方法无法自动解决不可观测趋势差异。同期 PSM-DID 的 Bias
+相对较小，为 0.294，但覆盖率也只有
+0.357，仍然说明推断表现较差。该结果强调：现代 DID
+方法和匹配方法可以缓解部分错误比较或可观测选择问题，但不能替代平行趋势等核心识别假设。
+
+在场景 D 中，处理效应具有动态衰减和 cohort 异质性。TWFE 的 Bias 为
+0.345，Coverage 为 0，说明传统 TWFE
+在动态异质处理效应下存在明显偏误。相比之下，滚动 PSM-DID 和 CSDID 的
+Bias 都接近 0，说明它们能够更好地恢复所有处理后时期上的平均
+ATT。需要注意的是，同期 PSM-DID 在场景 D 中的 True ATT 为
+2.067，而其他方法的 True ATT 为 1.368。这是因为同期 PSM-DID
+只比较处理发生当期，因此其目标参数是初始处理效应的平均值，而不是所有处理后时期上的平均处理效应。
+
+\subsection{覆盖率表}\label{ux8986ux76d6ux7387ux8868}
+
+为了更清楚地展示推断有效性，表 2 单独报告 95\% 置信区间覆盖率。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule\noalign{}
+场景 & TWFE & PSM-DID & Rolling PSM & CSDID \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Scenario A & 0.944 & 0.951 & 0.753 & 0.937 \\
+Scenario B & 0.000 & 0.913 & 0.712 & 0.759 \\
+Scenario C & 0.000 & 0.357 & 0.000 & 0.000 \\
+Scenario D & 0.000 & 0.950 & 0.740 & 0.955 \\
+\end{longtable}
+}
+
+从覆盖率表可以看出，覆盖率的变化与偏误和标准误表现密切相关。
+
+在场景 A 中，TWFE、PSM-DID 和 CSDID 的覆盖率均接近
+0.95，说明当识别假设成立时，这些方法的推断表现较好。滚动 PSM-DID
+的覆盖率偏低，主要是因为其 Mean SE 明显小于 Monte Carlo SD。
+
+在场景 B 中，TWFE 的覆盖率为
+0，原因不是标准误本身波动过大，而是点估计存在系统性偏误。PSM-DID
+的覆盖率为 0.913，明显优于
+TWFE，说明匹配能够改善由可观测选择导致的推断问题。CSDID 的覆盖率为
+0.759，也比 TWFE 好，但仍低于 0.95。
+
+在场景 C 中，除 PSM-DID 外，其余方法的覆盖率均为
+0。这说明不可观测时变混淆会严重破坏推断有效性。即使某些方法报告了较小标准误，其置信区间也无法覆盖真实
+ATT，因为估计量本身已经存在系统性偏误。
+
+在场景 D 中，CSDID 和同期 PSM-DID 的覆盖率接近 0.95，而 TWFE 的覆盖率为
+0。这说明在动态效应和 cohort 异质性存在时，TWFE 的推断非常不可靠，而
+CSDID 更适合处理这类交错处理问题。
+
+\subsection{标准误与 Monte Carlo
+标准差比较}\label{ux6807ux51c6ux8befux4e0e-monte-carlo-ux6807ux51c6ux5deeux6bd4ux8f83}
+
+表 3 比较了平均标准误和 Monte Carlo 标准差。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrr@{}}
+\toprule\noalign{}
+场景-方法 & Mean SE & MC SD & SE / MC SD \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A-TWFE & 0.051 & 0.053 & 0.966 \\
+A-PSM-DID & 0.124 & 0.125 & 0.989 \\
+A-Rolling PSM & 0.058 & 0.101 & 0.576 \\
+A-CSDID & 0.081 & 0.083 & 0.973 \\
+B-TWFE & 0.057 & 0.055 & 1.042 \\
+B-PSM-DID & 0.215 & 0.227 & 0.950 \\
+B-Rolling PSM & 0.174 & 0.301 & 0.577 \\
+B-CSDID & 0.157 & 0.260 & 0.602 \\
+C-TWFE & 0.088 & 0.072 & 1.224 \\
+C-PSM-DID & 0.128 & 0.130 & 0.983 \\
+C-Rolling PSM & 0.068 & 0.126 & 0.537 \\
+C-CSDID & 0.109 & 0.106 & 1.027 \\
+D-TWFE & 0.058 & 0.051 & 1.137 \\
+D-PSM-DID & 0.124 & 0.125 & 0.996 \\
+D-Rolling PSM & 0.058 & 0.102 & 0.568 \\
+D-CSDID & 0.081 & 0.080 & 1.010 \\
+\end{longtable}
+}
+
+表 3 显示，TWFE、PSM-DID 和 CSDID 在部分场景中 Mean SE 与 MC SD
+较为接近。例如场景 A 中 TWFE 的 SE/MC SD 为 0.966，PSM-DID 为
+0.989，CSDID 为 0.973；场景 D 中 CSDID 的 SE/MC SD 为
+1.010。这说明这些方法在相应场景下对估计量波动的刻画较为准确。
+
+相比之下，滚动 PSM-DID 在所有场景中 SE/MC SD 都明显小于 1，例如场景 A 为
+0.576，场景 B 为 0.577，场景 D 为 0.568。这意味着滚动 PSM-DID
+的平均标准误低估了估计量在 Monte Carlo
+模拟中的真实波动，因此其覆盖率明显偏低。这个结果说明，在滚动匹配 DID
+中，如果简单地将多个 cohort-period
+估计结果加权汇总，标准误的构造需要更加谨慎。
+
+\subsection{偏误-方差权衡图}\label{ux504fux8bef-ux65b9ux5deeux6743ux8861ux56fe}
+
+除了表格结果外，本文还绘制了偏误-方差权衡图。图中横轴为 Monte Carlo
+标准差，表示估计量在重复模拟中的波动；纵轴为绝对偏误，表示平均估计值与真实
+ATT 之间的距离。越靠近左下角，说明方法同时具有较小偏误和较小波动。
+
+\subsubsection{场景
+A：偏误-方差权衡图}\label{ux573aux666f-aux504fux8bef-ux65b9ux5deeux6743ux8861ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/bias_variance_scenario_A.png}
+
+}
+
+\caption{场景 A 偏误-方差权衡图}
+
+\end{figure}%
+
+\subsubsection{场景
+B：偏误-方差权衡图}\label{ux573aux666f-bux504fux8bef-ux65b9ux5deeux6743ux8861ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/bias_variance_scenario_B.png}
+
+}
+
+\caption{场景 B 偏误-方差权衡图}
+
+\end{figure}%
+
+\subsubsection{场景
+C：偏误-方差权衡图}\label{ux573aux666f-cux504fux8bef-ux65b9ux5deeux6743ux8861ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/bias_variance_scenario_C.png}
+
+}
+
+\caption{场景 C 偏误-方差权衡图}
+
+\end{figure}%
+
+\subsubsection{场景
+D：偏误-方差权衡图}\label{ux573aux666f-dux504fux8bef-ux65b9ux5deeux6743ux8861ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/bias_variance_scenario_D.png}
+
+}
+
+\caption{场景 D 偏误-方差权衡图}
+
+\end{figure}%
+
+从偏误-方差权衡图可以更直观地看到不同方法的相对位置。
+
+在场景 A
+中，各方法整体接近左下角，说明在理想设定下不同方法都能较好恢复真实 ATT。
+
+在场景 B 中，TWFE 的绝对偏误明显较大，而 PSM-DID 和 CSDID
+更靠近左下角。这与表格结果一致，说明在处理分配依赖可观测协变量时，匹配和协变量调整可以显著降低偏误。
+
+在场景 C 中，多个方法的绝对偏误明显上升，尤其是 TWFE、滚动 PSM-DID 和
+CSDID。这说明当不可观测时变混淆存在时，估计方法本身很难完全修复识别假设的破坏。
+
+在场景 D 中，TWFE 的偏误明显大于 CSDID 和滚动
+PSM-DID。这说明当处理效应存在动态衰减和 cohort 异质性时，传统 TWFE
+容易受到错误比较影响，而现代 DID 方法更能对应清晰的平均处理效应。
+
+\subsection{事件研究图}\label{ux4e8bux4ef6ux7814ux7a76ux56fe}
+
+为了展示动态处理效应，本文使用 Sun and Abraham
+方法估计事件时间系数，并绘制事件研究图。事件研究图的横轴为相对处理时间，纵轴为估计的动态处理效应。处理前
+lead 系数用于观察平行趋势是否合理，处理后 lag
+系数用于展示处理效应随事件时间的变化。
+
+\subsubsection{场景
+A：事件研究图}\label{ux573aux666f-aux4e8bux4ef6ux7814ux7a76ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/event_study_scenario_A.png}
+
+}
+
+\caption{场景 A 事件研究图}
+
+\end{figure}%
+
+\subsubsection{场景
+B：事件研究图}\label{ux573aux666f-bux4e8bux4ef6ux7814ux7a76ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/event_study_scenario_B.png}
+
+}
+
+\caption{场景 B 事件研究图}
+
+\end{figure}%
+
+\subsubsection{场景
+C：事件研究图}\label{ux573aux666f-cux4e8bux4ef6ux7814ux7a76ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/event_study_scenario_C.png}
+
+}
+
+\caption{场景 C 事件研究图}
+
+\end{figure}%
+
+\subsubsection{场景
+D：事件研究图}\label{ux573aux666f-dux4e8bux4ef6ux7814ux7a76ux56fe}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{figures/event_study_scenario_D.png}
+
+}
+
+\caption{场景 D 事件研究图}
+
+\end{figure}%
+
+事件研究图的结果与 DGP 设定基本一致。
+
+在场景 A 中，处理前系数整体接近 0，处理后系数接近同质处理效应
+2。这说明在随机处理分配和平行趋势成立的基准情形下，事件研究方法能够较好恢复动态效应路径。
+
+在场景 B 中，处理前系数可能偏离
+0，因为处理时间与可观测协变量相关，而这些协变量同时影响未处理结果趋势。这说明如果不进行适当协变量调整，平行趋势可能在无条件意义下不成立。
+
+在场景 C 中，处理前系数偏离 0 的问题更明显。由于不可观测因素 \(\eta_i\)
+同时影响处理分配和未处理结果趋势，事件研究图能够直观反映平行趋势假设被破坏。
+
+在场景 D 中，处理前系数相对接近 0，而处理后系数随事件时间逐渐下降。这与
+DGP 中设定的动态衰减处理效应一致，说明 Sun and Abraham
+事件研究估计能够较好展示动态异质效应结构。
+
+\subsection{小结}\label{ux5c0fux7ed3}
+
+本节的 Monte Carlo 结果说明，不同估计方法的表现高度依赖 DGP 条件。
+
+在平行趋势成立且处理效应同质时，传统 TWFE 和现代 DID
+方法都能表现较好；在处理分配与可观测协变量相关时，匹配 DID
+和控制协变量的 CSDID
+能够明显降低偏误；在存在不可观测时变混淆时，各类方法都可能失效；在动态处理效应和
+cohort 异质性存在时，传统 TWFE 会出现明显偏误，而 CSDID
+和事件研究方法更适合处理这类交错处理结构。
+
+因此，本文的主要结论不是某一种方法在所有场景下都最优，而是：估计方法的选择必须与识别条件相匹配。现代
+DID
+方法可以缓解交错处理下的错误比较问题，匹配方法可以缓解可观测选择问题，但没有任何方法可以自动解决不可观测时变混淆。
+
+\section{统计性质验证}\label{ux7edfux8ba1ux6027ux8d28ux9a8cux8bc1}
+
+本节进一步对作业要求中的统计性质命题进行验证。前文已经报告了 Monte Carlo
+主结果、覆盖率表、标准误与 Monte Carlo
+标准差比较、偏误-方差权衡图和事件研究图。本节在这些结果基础上，围绕四个命题进行集中讨论：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  当存在 never-treated 单位时，Callaway and Sant'Anna
+  估计量是否能够一致估计真实 ATT；
+\item
+  当平行趋势只在条件于协变量 \(X_i\) 时成立，滚动匹配 DID
+  是否能够改善估计表现；
+\item
+  合成控制法在什么条件下优于传统匹配；
+\item
+  传统 TWFE 在交错处理下的偏误方向和偏误来源。
+\end{enumerate}
+
+本节的目的不是重复展示所有模拟结果，而是将前文的数值结果与计量理论联系起来，说明不同方法为什么在不同
+DGP 场景下表现不同。
+
+\subsection{命题 1：CSDID 在存在 never-treated
+单位时是否一致？}\label{ux547dux9898-1csdid-ux5728ux5b58ux5728-never-treated-ux5355ux4f4dux65f6ux662fux5426ux4e00ux81f4}
+
+命题 1 关注的是：当数据中存在 never-treated
+单位，并且平行趋势等识别假设成立时，Callaway and Sant'Anna DID
+是否能够一致估计真实 ATT。
+
+在本文 DGP 中，场景 A 和场景 D 都包含 never-treated
+单位，并且处理分配是随机的。二者的区别在于：场景 A
+中处理效应同质且固定，场景 D 中处理效应具有动态衰减和 cohort
+异质性。因此，这两个场景可以用来考察 CSDID
+在理想条件和动态异质效应条件下的表现。
+
+从 Monte Carlo 主结果看，在场景 A 中，CSDID 的平均估计值为 2.000，真实
+ATT 为 2.000，Bias 接近 0，RMSE 为 0.083，覆盖率为
+0.937。这说明在平行趋势成立且处理效应同质的情况下，CSDID
+能够较好恢复真实处理效应，其推断表现也接近理论上的 95\% 置信区间覆盖率。
+
+在场景 D 中，CSDID 的真实 ATT 为 1.368，平均估计值同样为 1.368，Bias
+接近 0，RMSE 为 0.080，覆盖率为 0.955。这个结果尤其重要，因为场景 D
+中存在动态处理效应和 cohort 异质性。传统 TWFE 在该场景下的 Bias 为
+0.345，覆盖率为 0，而 CSDID 仍然能够恢复真实平均处理效应。这说明 CSDID
+通过构造 group-time ATT，即 \(ATT(g,t)\)，能够避免 TWFE
+在交错处理下的错误比较问题。
+
+不过，CSDID 的一致性并不是无条件成立的。场景 C 中 CSDID 的 Bias 达到
+1.473，覆盖率为
+0。这说明当不可观测时变混淆因素同时影响处理分配和未处理结果趋势时，平行趋势假设被破坏，即使使用现代
+DID 方法，也无法自动恢复真实 ATT。
+
+因此，命题 1 的验证结论是：在存在 never-treated
+单位且平行趋势成立时，CSDID 能够较好识别真实
+ATT；但是，当存在不可观测时变混淆并破坏平行趋势时，CSDID
+仍然会产生严重偏误。现代 DID
+方法能够解决交错处理下的错误比较问题，但不能替代识别假设本身。
+
+\subsection{命题 2：条件平行趋势下滚动匹配 DID 是否优于无条件
+DID？}\label{ux547dux9898-2ux6761ux4ef6ux5e73ux884cux8d8bux52bfux4e0bux6edaux52a8ux5339ux914d-did-ux662fux5426ux4f18ux4e8eux65e0ux6761ux4ef6-did}
+
+命题 2 关注的是：当平行趋势只在条件于协变量 \(X_i\) 时成立，滚动匹配 DID
+是否能够恢复更好的估计表现。本文主要利用场景 B 检验这一命题。
+
+在场景 B 中，处理分配与可观测协变量 \(X_1\) 和 \(X_2\)
+相关。同时，\(X_1\) 和 \(X_2\)
+也影响未处理结果趋势。因此，处理组和控制组在无条件意义下不满足平行趋势。如果直接使用
+TWFE，估计结果可能会把协变量导致的趋势差异误认为处理效应。
+
+Monte Carlo 结果支持这一点。在场景 B 中，TWFE 的真实 ATT 为
+2.000，但平均估计值为 2.392，Bias 为 0.392，覆盖率为
+0。这说明当处理分配受可观测协变量影响时，传统无条件 TWFE
+会明显高估真实处理效应。
+
+相比之下，同期 PSM-DID 在场景 B 中表现明显更好。其平均估计值为
+2.004，Bias 仅为 0.004，RMSE 为 0.227，覆盖率为 0.913。这说明通过在
+\(X_1\) 和 \(X_2\)
+上进行倾向得分匹配，可以显著改善处理组和控制组的可比性，从而缓解可观测选择偏误。
+
+滚动 PSM-DID 的结果介于 TWFE 和同期 PSM-DID 之间。其 Bias 为
+0.088，明显小于 TWFE 的 0.392，但大于同期 PSM-DID 的
+0.004。这个结果说明，滚动匹配 DID
+确实能够降低可观测选择偏误，但其标准误估计存在一定问题。场景 B 中滚动
+PSM-DID 的 Coverage 为 0.712，SE/MC SD 为 0.577，说明其标准误明显低估了
+Monte Carlo 中估计量的真实波动。
+
+因此，命题 2 的验证结论是：当处理分配与可观测协变量相关时，匹配 DID
+相比无条件 TWFE 能够显著降低偏误；但滚动匹配 DID
+的标准误构造需要谨慎。如果只是简单地将多个 cohort-period
+的匹配估计结果加权汇总，可能会低估估计不确定性，从而导致覆盖率偏低。
+
+\subsection{命题
+3：合成控制法在什么条件下优于传统匹配？}\label{ux547dux9898-3ux5408ux6210ux63a7ux5236ux6cd5ux5728ux4ec0ux4e48ux6761ux4ef6ux4e0bux4f18ux4e8eux4f20ux7edfux5339ux914d}
+
+命题 3 关注的是：合成控制法在什么条件下可能优于传统匹配方法。
+
+传统匹配方法通常基于处理前协变量进行匹配，例如本文中的同期 PSM-DID
+和滚动 PSM-DID 使用 \(X_1\) 和 \(X_2\)
+进行倾向得分匹配。其核心目标是让处理组和控制组在可观测协变量上尽可能相似。
+
+合成控制法的逻辑不同。SCM
+不只是匹配静态协变量，而是更强调处理前结果路径的相似性。它通过 donor
+pool
+中多个控制单位的加权组合，构造一个在处理前走势上尽可能接近处理组的合成控制组。因此，当处理前结果路径比静态协变量更能反映潜在结果趋势时，SCM
+可能比传统匹配更有优势。
+
+在本文 DGP 中，SCM 的表现主要取决于两个因素。
+
+第一，处理前时期数量。对于 \(G_i=4\) 的 cohort，处理前只有 3 期；对于
+\(G_i=6\) 的 cohort，处理前有 5 期；对于 \(G_i=8\) 的 cohort，处理前有 7
+期。处理前时期越长，SCM
+越容易拟合处理组的处理前结果路径。因此，较晚处理的 cohort
+理论上更适合使用 SCM。
+
+第二，donor pool 的相似性。本文使用 never-treated 个体作为 donor
+pool。如果 donor pool 中存在与处理组处理前趋势相似的单位，SCM
+可以通过加权组合构造较好的反事实结果。相反，如果 never-treated
+个体与处理组在处理前趋势上差异较大，SCM 的拟合效果会下降。
+
+因此，SCM
+在以下条件下可能优于传统匹配方法：处理单位数量较少，处理前时期较长，donor
+pool
+充足且与处理组趋势相似，处理前结果路径能够较好反映未处理潜在趋势。相反，如果处理前时期太短，或者
+donor pool 缺乏相似控制单位，SCM 可能不如传统匹配稳定。
+
+在本文中，SCM 被作为补充方法展示，而没有纳入 Monte Carlo
+主表。这样处理的原因是，标准 SCM
+通常不直接报告常规解析标准误，因此不适合与 TWFE、PSM-DID 和 CSDID
+一起比较覆盖率。不过，SCM
+的条件讨论仍然具有意义，因为它说明：当研究对象是少数处理单位，且处理前路径信息丰富时，合成控制法可能比单纯基于协变量的匹配更合适。
+
+\subsection{命题 4：TWFE
+在交错处理下的偏误方向和来源}\label{ux547dux9898-4twfe-ux5728ux4ea4ux9519ux5904ux7406ux4e0bux7684ux504fux8befux65b9ux5411ux548cux6765ux6e90}
+
+命题 4 关注的是：传统 TWFE 在交错处理设定下的偏误方向和偏误来源。
+
+TWFE 模型可以写为：
+
+\[
+Y_{it}=\alpha_i+\lambda_t+\beta D_{it}+\varepsilon_{it}
+\]
+
+在简单两期两组 DID 中，\(\beta\)
+可以被解释为平均处理效应。但是在交错处理设定下，不同 cohort
+在不同时间接受处理，TWFE 实际上混合了多种 \(2\times 2\) DID
+比较。这些比较包括早处理组与 never-treated 组、晚处理组与 never-treated
+组、早处理组与晚处理组，以及晚处理组与早处理组。
+
+问题在于，当已经接受处理的早处理组被用作晚处理组的对照组时，如果处理效应具有动态变化，那么这个比较就不再是有效的反事实比较。此时
+TWFE 可能产生偏误。
+
+本文的 Monte Carlo 结果清楚展示了 TWFE 偏误的不同来源。
+
+在场景 A 中，处理分配随机、平行趋势成立且处理效应同质。TWFE 的 Bias 接近
+0，Coverage 为 0.944。这说明在理想条件下，TWFE 可以较好恢复真实 ATT。
+
+在场景 B 中，TWFE 的 Bias 为
+0.392，明显高估真实处理效应。偏误来源主要是可观测协变量导致的趋势差异。由于较早处理个体具有不同的
+\(X_1\) 和 \(X_2\) 分布，而这些协变量同时影响结果趋势，TWFE
+将部分协变量趋势差异错误归因于处理效应。
+
+在场景 C 中，TWFE 的 Bias 上升到 1.140，Coverage 为
+0。偏误更加严重的原因是，处理分配受到不可观测因素 \(\eta_i\) 影响，而
+\(\eta_i\)
+同时影响未处理结果趋势。个体固定效应和时间固定效应无法控制这种不可观测时变混淆，因此
+TWFE 产生严重偏误。
+
+在场景 D 中，TWFE 的 Bias 为 0.345，Coverage 为
+0。此时处理分配是随机的，因此偏误不是来自选择性处理，而是来自动态处理效应和
+cohort 异质性。由于不同 cohort
+的处理效应不同，并且处理效应随事件时间衰减，TWFE 会混合不同时间和不同
+cohort 的比较，从而不再对应一个清晰的平均处理效应。
+
+因此，命题 4 的验证结论是：TWFE 的偏误方向和大小取决于 DGP
+中平行趋势是否成立、处理分配是否与协变量或不可观测因素相关，以及处理效应是否存在动态异质性。在本文模拟中，TWFE
+在场景 B、C、D 中均表现出正向偏误，其中场景 C 的偏误最大。这说明传统
+TWFE 在交错处理和非理想识别条件下需要谨慎使用。
+
+\subsection{小结}\label{ux5c0fux7ed3-1}
+
+本节对四个统计性质命题进行了集中验证。
+
+第一，CSDID 在存在 never-treated 单位且平行趋势成立时能够较好恢复真实
+ATT，尤其在动态异质效应场景 D 中明显优于 TWFE。但是 CSDID
+仍然依赖平行趋势假设，无法自动解决不可观测时变混淆。
+
+第二，当处理分配与可观测协变量相关时，匹配 DID 相比 TWFE
+能够显著降低偏误。同期 PSM-DID 在场景 B 中表现尤其好，滚动 PSM-DID
+也能降低偏误，但其标准误估计偏小，导致覆盖率不足。
+
+第三，SCM 的优势条件主要是处理单位较少、处理前时期较长、donor pool
+充足且处理前结果路径相似。SCM
+的优势在于直接拟合处理前结果路径，但其表现高度依赖 donor pool
+和处理前时期长度。
+
+第四，TWFE
+在交错处理下的偏误来自多种机制，包括可观测选择、不可观测时变混淆、动态处理效应和
+cohort 异质性。本文模拟结果说明，TWFE 只有在较理想的场景 A
+中表现可靠，在更复杂的场景下可能产生明显偏误。
+
+总体而言，本节说明，方法选择必须依赖具体识别环境。现代 DID
+方法可以缓解交错处理下的错误比较问题，匹配方法可以缓解可观测选择问题，SCM
+适合处理前路径信息丰富的少数处理单位场景；但所有方法都无法自动解决不可观测时变混淆。识别假设本身仍然是因果推断的核心。
+
+\section{\texorpdfstring{理论推导：Callaway and Sant'Anna 的
+\(ATT(g,t)\)
+识别公式}{理论推导：Callaway and Sant'Anna 的 ATT(g,t) 识别公式}}\label{ux7406ux8bbaux63a8ux5bfccallaway-and-santanna-ux7684-attgt-ux8bc6ux522bux516cux5f0f}
+
+根据作业要求，研究报告需要至少包含一个命题的严格理论推导。本文选择推导
+Callaway and Sant'Anna DID 中的组别-时间平均处理效应，即 \(ATT(g,t)\)
+的识别公式。
+
+选择这一命题的原因是，本文在 Monte Carlo 模拟中使用了 CSDID
+方法，并且前文结果显示 CSDID 在交错处理、动态效应和 cohort
+异质性场景下明显优于传统 TWFE。因此，推导 \(ATT(g,t)\)
+的识别公式可以帮助解释为什么 CSDID
+能够在交错处理设定下构造更清晰的因果比较。
+
+\subsection{基本定义}\label{ux57faux672cux5b9aux4e49}
+
+令 \(G_i\) 表示个体 \(i\) 的首次处理时间。如果个体 \(i\) 在第 \(g\)
+期首次接受处理，则 \(G_i=g\)；如果个体从未接受处理，则 \(G_i=0\)。
+
+处理状态定义为：
+
+\[
+D_{it}=1(G_i>0,\ t\geq G_i)
+\]
+
+潜在结果定义为：
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_{it}(1)\)：个体 \(i\) 在时期 \(t\) 接受处理时的潜在结果；
+\item
+  \(Y_{it}(0)\)：个体 \(i\) 在时期 \(t\) 未接受处理时的潜在结果。
+\end{itemize}
+
+观测结果为：
+
+\[
+Y_{it}=D_{it}Y_{it}(1)+(1-D_{it})Y_{it}(0)
+\]
+
+对于第 \(g\) 期处理组，在时期 \(t\geq g\)
+的组别-时间平均处理效应定义为：
+
+\[
+ATT(g,t)=E[Y_{it}(1)-Y_{it}(0)\mid G_i=g]
+\]
+
+这个对象表示：第 \(g\) 期开始接受处理的个体，在时期 \(t\)
+的平均处理效应。与传统 TWFE 直接估计一个总体平均效应不同，\(ATT(g,t)\)
+明确区分了不同处理批次和不同时期的处理效应，因此更适合交错处理设定。
+
+\subsection{识别假设}\label{ux8bc6ux522bux5047ux8bbe}
+
+为了识别 \(ATT(g,t)\)，需要两个核心假设。
+
+\subsubsection{无预期效应}\label{ux65e0ux9884ux671fux6548ux5e94}
+
+无预期效应假设是指，在真正接受处理之前，个体的结果不会受到未来处理的影响。对于第
+\(g\) 期处理组，在 \(t<g\) 时：
+
+\[
+Y_{it}=Y_{it}(0)
+\]
+
+也就是说，处理组在处理前的观测结果等于未处理潜在结果。在本文的推导中，特别使用处理前一期
+\(g-1\) 作为基准期，因此有：
+
+\[
+Y_{i,g-1}=Y_{i,g-1}(0)
+\]
+
+\subsubsection{平行趋势假设}\label{ux5e73ux884cux8d8bux52bfux5047ux8bbe}
+
+本文使用 never-treated
+个体作为控制组。平行趋势假设要求：在没有处理的情况下，第 \(g\)
+期处理组和 never-treated 控制组的未处理潜在结果变化趋势相同。
+
+以 \(g-1\) 作为处理前基准期，对于 \(t\geq g\)，平行趋势假设可以写为：
+
+\[
+E[Y_{it}(0)-Y_{i,g-1}(0)\mid G_i=g]
+=
+E[Y_{it}(0)-Y_{i,g-1}(0)\mid G_i=0]
+\]
+
+这个假设的含义是：如果第 \(g\) 期处理组没有接受处理，那么它们从 \(g-1\)
+到 \(t\) 的结果变化，应当等于 never-treated
+组在同一时期区间内的结果变化。
+
+\subsection{识别公式推导}\label{ux8bc6ux522bux516cux5f0fux63a8ux5bfc}
+
+我们的目标是识别：
+
+\[
+ATT(g,t)=E[Y_{it}(1)-Y_{it}(0)\mid G_i=g]
+\]
+
+对于第 \(g\) 期处理组，在时期
+\(t\geq g\)，它们已经接受处理。因此，观测结果满足：
+
+\[
+Y_{it}=Y_{it}(1)
+\]
+
+所以：
+
+\[
+ATT(g,t)
+=
+E[Y_{it}\mid G_i=g]
+-
+E[Y_{it}(0)\mid G_i=g]
+\]
+
+其中，\(E[Y_{it}\mid G_i=g]\) 可以从数据中观测到，但
+\(E[Y_{it}(0)\mid G_i=g]\)
+是反事实结果，无法直接观测。因此，识别问题的关键是构造第 \(g\)
+期处理组在时期 \(t\) 的未处理反事实结果。
+
+首先，将第 \(g\) 期处理组在时期 \(t\)
+的未处理潜在结果写成处理前一期水平加上未处理状态下的变化：
+
+\[
+E[Y_{it}(0)\mid G_i=g]
+=
+E[Y_{i,g-1}(0)\mid G_i=g]
++
+E[Y_{it}(0)-Y_{i,g-1}(0)\mid G_i=g]
+\]
+
+根据无预期效应，第 \(g\) 期处理组在 \(g-1\) 期尚未接受处理，因此：
+
+\[
+E[Y_{i,g-1}(0)\mid G_i=g]
+=
+E[Y_{i,g-1}\mid G_i=g]
+\]
+
+根据平行趋势假设，第 \(g\) 期处理组的未处理潜在结果变化可以由
+never-treated 组的结果变化替代：
+
+\[
+E[Y_{it}(0)-Y_{i,g-1}(0)\mid G_i=g]
+=
+E[Y_{it}(0)-Y_{i,g-1}(0)\mid G_i=0]
+\]
+
+对于 never-treated
+组，因为其在所有时期都没有接受处理，所以观测结果等于未处理潜在结果：
+
+\[
+Y_{it}=Y_{it}(0),\quad Y_{i,g-1}=Y_{i,g-1}(0)
+\]
+
+因此：
+
+\[
+E[Y_{it}(0)-Y_{i,g-1}(0)\mid G_i=0]
+=
+E[Y_{it}-Y_{i,g-1}\mid G_i=0]
+\]
+
+将以上结果代入反事实表达式，可以得到：
+
+\[
+E[Y_{it}(0)\mid G_i=g]
+=
+E[Y_{i,g-1}\mid G_i=g]
++
+E[Y_{it}-Y_{i,g-1}\mid G_i=0]
+\]
+
+再将该式代入 \(ATT(g,t)\) 的定义：
+
+\[
+ATT(g,t)
+=
+E[Y_{it}\mid G_i=g]
+-
+\left[
+E[Y_{i,g-1}\mid G_i=g]
++
+E[Y_{it}-Y_{i,g-1}\mid G_i=0]
+\right]
+\]
+
+整理可得：
+
+\[
+ATT(g,t)
+=
+E[Y_{it}-Y_{i,g-1}\mid G_i=g]
+-
+E[Y_{it}-Y_{i,g-1}\mid G_i=0]
+\]
+
+这就是基于 never-treated 控制组的组别-时间 DID 识别公式。
+
+\subsection{推导结果解释}\label{ux63a8ux5bfcux7ed3ux679cux89e3ux91ca}
+
+最终识别公式为：
+
+\[
+ATT(g,t)
+=
+E[Y_{it}-Y_{i,g-1}\mid G_i=g]
+-
+E[Y_{it}-Y_{i,g-1}\mid G_i=0]
+\]
+
+这个公式说明，\(ATT(g,t)\) 可以通过一个局部 DID 比较识别出来：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  先计算第 \(g\) 期处理组从处理前一期 \(g-1\) 到时期 \(t\) 的结果变化；
+\item
+  再计算 never-treated 控制组在同一时期区间内的结果变化；
+\item
+  两者之差就是第 \(g\) 期处理组在时期 \(t\) 的平均处理效应。
+\end{enumerate}
+
+这个识别公式的关键在于，它没有把已经接受处理的单位作为控制组，而是使用
+never-treated 组构造 clean comparison。因此，在交错处理设定下，CSDID
+避免了传统 TWFE 中 already-treated units 被错误用作控制组的问题。
+
+与传统 TWFE 相比，CSDID
+的优势不是简单地加入更多控制变量，而是重新定义了因果参数和比较对象。它先估计不同
+cohort 和不同时期的 \(ATT(g,t)\)，再根据研究目标对这些 group-time ATT
+进行加权汇总。因此，在存在动态处理效应和 cohort 异质性时，CSDID
+更容易对应一个清晰的平均处理效应。
+
+\subsection{与本文 Monte Carlo
+结果的关系}\label{ux4e0eux672cux6587-monte-carlo-ux7ed3ux679cux7684ux5173ux7cfb}
+
+上述理论推导可以解释本文 Monte Carlo 模拟中的主要结果。
+
+首先，在场景 A
+中，处理分配是随机的，平行趋势成立，并且处理效应同质。因此，CSDID
+能够较好识别真实 ATT。模拟结果中，CSDID 的 Bias 接近 0，覆盖率也接近
+0.95，这与理论推导一致。
+
+其次，在场景 D 中，处理效应具有动态衰减和 cohort 异质性。传统 TWFE
+会混合不同 cohort 和不同事件时间的比较，因此出现明显偏误；而 CSDID
+通过估计 \(ATT(g,t)\)，能够分别处理不同 cohort
+和不同时期的效应。模拟结果中，CSDID 在场景 D 中的 Bias 接近 0，而 TWFE
+的 Bias 明显为正，这正体现了现代 DID 方法在交错处理下的优势。
+
+再次，在场景 B
+中，处理时间与可观测协变量相关。如果估计中能够适当控制协变量，CSDID
+可以部分缓解可观测选择偏误。模拟结果中，CSDID 的 Bias 明显小于
+TWFE，说明协变量调整和 clean control 的构造确实改善了估计表现。
+
+最后，在场景 C 中，存在不可观测时变混淆因素 \(\eta_i\)。由于 \(\eta_i\)
+同时影响处理分配和未处理结果趋势，平行趋势假设被破坏。理论推导表明，CSDID
+的识别依赖平行趋势假设；因此，一旦该假设不成立，CSDID
+也无法保证一致。模拟结果中，场景 C 下 CSDID 出现较大 Bias，正好说明现代
+DID 方法不能自动解决不可观测时变混淆问题。
+
+因此，本文的理论推导和模拟结果是一致的：CSDID
+能够解决交错处理下的部分错误比较问题，尤其适用于动态效应和 cohort
+异质性场景；但它仍然依赖平行趋势等核心识别假设。估计方法的改进不能替代合理的研究设计。
+
+\section{论文批判性评价：以 Bailey, Sun and Timpe (2021)
+为例}\label{ux8bbaux6587ux6279ux5224ux6027ux8bc4ux4ef7ux4ee5-bailey-sun-and-timpe-2021-ux4e3aux4f8b}
+
+本部分选择对 Bailey, Sun and Timpe (2021)
+进行方法层面的批判性评价。该文献为：
+
+Bailey, Martha J., Shuqiao Sun, and Brenden Timpe. 2021. ``Prep School
+for Poor Kids: The Long-Run Impacts of Head Start on Human Capital and
+Economic Self-Sufficiency.'' \emph{American Economic Review}, 111(12):
+3963--4001. DOI: 10.1257/aer.20181801.
+
+本文不对该论文进行完整数据复现，而是从交错处理 DID 和现代 DID
+方法的角度，对该论文的识别策略、研究贡献、潜在局限以及可以补充的稳健性检验进行批判性评价。选择这篇论文的原因是，Head
+Start 项目在不同 county 和不同时间逐步推广，天然具有 staggered rollout
+的特征。因此，该论文非常适合用于讨论交错处理、动态处理效应、cohort
+异质性、clean controls 和长期政策评估中的识别问题。
+
+\subsection{论文背景与研究问题}\label{ux8bbaux6587ux80ccux666fux4e0eux7814ux7a76ux95eeux9898}
+
+Bailey, Sun and Timpe (2021) 研究美国 Head Start 项目的长期影响。Head
+Start
+是美国面向低收入儿童的公共学前教育项目，其政策目标不仅是提高儿童进入小学前的准备程度，也包括改善贫困儿童的长期人力资本积累和社会经济结果。因此，Head
+Start
+的政策评价具有非常强的现实意义：如果早期教育投入能够改善长期教育和经济结果，那么这种项目不仅是短期教育补偿政策，也可能是促进社会流动、减少贫困代际传递的重要公共投资。
+
+该论文关注的核心问题是：早期暴露于 Head Start
+是否能够在成年后显著改善个体的人力资本和经济自立能力。与许多只考察短期考试成绩或小学阶段表现的研究不同，该论文将重点放在长期结果上，包括受教育年限、高中完成、大学入学、大学完成以及成年后的经济自立能力。这一点非常重要，因为早期教育政策的短期效果和长期效果可能并不一致。某些早期教育项目可能在短期内提升认知能力，但这些影响可能随时间衰退；也有可能短期考试成绩影响不明显，但长期通过非认知能力、教育路径、健康行为和家庭决策等渠道影响成年结果。因此，长期结果比短期成绩更能体现政策的社会回报。
+
+该论文利用 Head Start 在 1965 年至 1980 年间的 county
+rollout，以及儿童入学年龄 cutoff 所带来的暴露差异，评估 Head Start
+对长期人力资本和经济自立能力的影响。根据 AER 官方摘要，该论文发现 Head
+Start 带来了较大的长期收益，包括受教育年限增加 0.65 年、高中完成率提高
+2.7\%、大学入学率提高 8.5\%、大学完成率提高
+39\%。这些结果表明，面向低收入儿童的公共学前教育项目可能具有显著的长期回报。
+
+从实证方法角度看，这篇论文的价值不仅在于研究结论本身，也在于它提供了一个典型的
+staggered rollout 政策评估场景。不同 county 并非在同一时间引入 Head
+Start，不同出生 cohort 在关键年龄阶段是否暴露于 Head Start
+也不同。因此，该研究天然涉及交错处理、长期动态效应和 cohort
+异质性等问题。这也正是本文大作业中 Monte Carlo 模拟所关注的核心问题。
+
+\subsection{原文识别策略的基本理解}\label{ux539fux6587ux8bc6ux522bux7b56ux7565ux7684ux57faux672cux7406ux89e3}
+
+该论文的识别思路可以概括为：利用 Head Start 在不同 county
+的逐步推广，以及儿童出生 cohort
+与项目进入时间之间的对应关系，识别早期项目暴露对成年后长期结果的影响。
+
+更具体地说，Head Start 的 rollout 并不是所有 county 同时发生的。一些
+county 较早获得项目，另一些 county
+较晚获得项目，甚至有些地区在研究窗口内可能没有获得同样程度的项目暴露。与此同时，儿童是否在适龄阶段暴露于
+Head Start，取决于其出生年份、所在 county
+以及项目进入当地的时间。因此，研究者可以比较不同 county-cohort
+之间的暴露差异，并将这种差异与成年后的教育和经济结果联系起来。
+
+这种研究设计具有明显的交错处理特征：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  不同 county 在不同时间获得 Head Start 项目；
+\item
+  不同出生 cohort 在儿童早期是否暴露于 Head Start 存在差异；
+\item
+  处理状态由 county rollout 时间和出生 cohort 共同决定；
+\item
+  结果变量在成年后才被观察，因此处理效应可能随着时间逐渐显现；
+\item
+  不同 county、不同 cohort 和不同项目实施时期的处理效应可能存在异质性。
+\end{enumerate}
+
+从本文大作业的角度看，该论文的研究设计和本文 DGP 中的 staggered
+treatment adoption 非常相似。本文 DGP 中的 \(G_i=4,6,8\)
+可以类比为不同地区的不同政策引入时间；never-treated
+单位可以类比为在研究窗口内没有暴露于项目的地区或 cohort；事件时间
+\(rel\_time=t-G_i\) 可以类比为某个 county-cohort 相对于 Head Start
+rollout 的时间距离。
+
+因此，该论文不仅是一篇重要的早期教育政策评估论文，也是一个很适合从现代
+DID
+角度重新审视的案例。它提醒我们，在真实政策研究中，处理并不总是简单地在同一时间发生；政策效果也不一定是固定不变的。研究者需要明确比较对象、处理时点、控制组定义和目标因果参数。
+
+\subsection{原文的主要贡献}\label{ux539fux6587ux7684ux4e3bux8981ux8d21ux732e}
+
+该论文的第一个贡献是研究问题重要。Head Start
+是美国历史悠久且规模巨大的早期教育和反贫困项目，其政策目标直接关系到儿童发展、教育不平等、贫困代际传递和人力资本积累。评估
+Head Start
+的长期效果，不只是判断一个项目是否``有效''，也关系到政府是否应当持续投资面向低收入儿童的早期教育项目。
+
+第二个贡献是关注长期结果。早期教育项目的评价常常面临``fade-out''问题，即短期认知成绩提升可能在几年后消失。如果研究只关注短期成绩，可能会低估或误判项目的长期价值。Bailey,
+Sun and Timpe (2021)
+将结果变量扩展到成年后的教育和经济结果，使研究更接近政策制定者真正关心的问题。特别是，如果
+Head Start
+能够提高高中完成、大学入学和大学完成，那么其影响就不仅仅是短期学习准备，而是可能改变个体长期教育路径和社会经济地位。
+
+第三个贡献是利用真实政策 rollout 构造准实验设计。与简单比较参加 Head
+Start 和未参加 Head Start 的个体不同，该论文利用 county rollout 和年龄
+cutoff
+所带来的外生或准外生暴露差异，试图缓解家庭选择进入项目所带来的内生性问题。因为家庭是否让孩子参加
+Head Start
+本身可能与父母教育、家庭重视教育程度、地区资源和儿童能力有关，直接比较参与者和非参与者容易产生选择偏误。利用政策推广时间和年龄资格差异，可以在一定程度上构造更可信的反事实比较。
+
+第四个贡献是数据质量较高。根据论文摘要，该文使用大规模限制性行政数据。行政数据的优势在于样本规模大、长期追踪能力强、结果变量相对客观。对于长期政策效果研究而言，这一点尤其重要，因为问卷调查数据容易面临样本流失、回忆误差和长期追踪困难，而行政数据能够更系统地观察成年后的教育和经济结果。
+
+第五个贡献是政策含义明确。论文发现 Head Start
+对长期人力资本和经济自立能力具有显著正向影响，这为公共学前教育投资提供了支持。如果早期教育项目能够在长期提高教育完成和经济独立能力，那么它可能不仅是短期福利支出，而是一种长期人力资本投资。
+
+因此，从研究问题、数据质量、政策意义和实证设计来看，Bailey, Sun and
+Timpe (2021) 是一篇非常重要且具有代表性的政策评估论文。
+
+\subsection{从现代 DID
+角度看原文可能面临的挑战}\label{ux4eceux73b0ux4ee3-did-ux89d2ux5ea6ux770bux539fux6587ux53efux80fdux9762ux4e34ux7684ux6311ux6218}
+
+尽管该论文具有很高价值，但从现代 DID
+和交错处理方法的角度看，这类研究仍然面临一些需要谨慎处理的问题。这里的批判并不是否定原文结论，而是说明：对于
+staggered rollout 类型的政策评估，传统 DID 或 TWFE
+设计需要补充更明确的识别检验和稳健性分析。
+
+\subsubsection{处理效应很可能存在动态性}\label{ux5904ux7406ux6548ux5e94ux5f88ux53efux80fdux5b58ux5728ux52a8ux6001ux6027}
+
+Head Start
+的影响很可能不是在儿童暴露后的某一个固定时期立即完全实现的。早期教育项目可能先影响儿童的入学准备、学习习惯和非认知能力，然后通过小学和中学阶段的教育路径逐渐影响高中毕业、大学入学和大学完成。也就是说，Head
+Start 的处理效应很可能是动态积累的。
+
+这与本文 DGP 中的场景 D 有直接对应关系。场景 D
+中，处理效应被设定为随事件时间动态变化，并且不同 cohort
+的初始效应不同。Monte Carlo 结果显示，在这种情形下，传统 TWFE 的 Bias
+为正且覆盖率为 0，而 CSDID 能够更好恢复真实
+ATT。这说明，当处理效应随时间变化时，简单报告一个总体 TWFE
+系数可能掩盖动态路径。
+
+对于 Bailey, Sun and Timpe (2021)
+而言，动态效应尤其重要。因为该论文研究的是长期结果，而长期结果本身就是通过多阶段过程形成的。Head
+Start 对大学完成的影响不可能在儿童 5
+岁时直接发生，而是通过后续教育路径逐步实现。因此，研究中应当尽可能展示不同
+event time
+或不同暴露窗口下的效应变化，而不是仅将所有处理后时期压缩为一个平均效应。
+
+从政策解释角度看，动态效应也很重要。如果 Head Start
+的影响在短期内较小，但在长期教育转折点上逐渐显现，那么政策含义是``早期投资通过长期路径积累影响''。如果影响在早期较强但随后衰减，那么政策含义则可能是``早期项目需要后续教育资源配合''。因此，动态效应不是一个技术细节，而直接影响对政策机制的理解。
+
+\subsubsection{处理效应可能存在 cohort
+异质性}\label{ux5904ux7406ux6548ux5e94ux53efux80fdux5b58ux5728-cohort-ux5f02ux8d28ux6027}
+
+除了动态效应之外，不同 rollout cohort 的处理效应也可能不同。Head Start
+在 1960 年代和 1970
+年代不同阶段的项目质量、覆盖范围、地方执行能力和配套资源可能并不相同。较早引入项目的
+county 可能与较晚引入项目的 county
+在贫困程度、政治支持、行政能力和教育资源方面存在系统性差异。因此，不同
+rollout cohort 的处理效应很可能不完全相同。
+
+这与本文 DGP 中的 cohort 异质性设定相对应。在场景 D
+中，\(G_i=4\)、\(G_i=6\) 和 \(G_i=8\) 三个 cohort 的初始处理效应分别为
+3.0、2.0 和 1.2。Monte Carlo 结果显示，当 cohort 异质性存在时，TWFE
+可能不再对应一个清晰的平均处理效应，而 CSDID 通过估计 \(ATT(g,t)\)
+能够更自然地处理不同 cohort 的差异。
+
+对于 Head Start 研究而言，cohort
+异质性不仅是估计问题，也是政策问题。如果早期 rollout 地区的效果大于晚期
+rollout
+地区，可能说明项目最初进入的是最需要干预的地区，或者早期项目质量更高；如果晚期
+rollout 地区效果更大，可能说明项目经过制度化后执行更成熟。不同 cohort
+的效果差异能够帮助研究者理解政策何时、何地、对谁最有效。
+
+因此，如果原文主要报告总体平均效应，那么可以进一步补充 cohort-specific
+ATT，考察不同 rollout cohort 的效果是否一致。这样不仅可以检验 TWFE
+是否掩盖异质性，也能提供更丰富的政策解释。
+
+\subsubsection{控制组选择需要更加明确}\label{ux63a7ux5236ux7ec4ux9009ux62e9ux9700ux8981ux66f4ux52a0ux660eux786e}
+
+在交错处理设定中，控制组选择是核心问题之一。如果已经接受处理的单位被用作尚未处理单位的控制组，那么估计结果可能受到
+already-treated controls 的影响。
+
+对于 Head Start 研究而言，较早获得 Head Start 的 county
+在后续时期已经可能受到项目影响。如果这些 county 被用于构造较晚 rollout
+county 的反事实趋势，那么控制组本身已经不是未处理状态。特别是在 Head
+Start 这种长期政策中，早期暴露可能对后续教育路径产生持续影响，因此
+already-treated units 更不适合作为干净控制组。
+
+本文 Monte Carlo 结果说明，在动态处理效应和 cohort 异质性存在时，TWFE
+的错误比较会导致明显偏误。场景 D 中，处理分配本身是随机的，因此 TWFE
+的偏误并不是来自选择性处理，而是来自动态效应和交错处理结构下的不当比较。这对
+Head Start 研究非常有启发：即使 rollout
+时间近似外生，只要处理效应动态变化，传统 TWFE
+仍可能因为比较对象不合适而出现偏误。
+
+因此，原文如果使用类似 TWFE 的设定，就需要清楚说明控制组来源，并补充使用
+never-treated 或 not-yet-treated 作为 clean controls
+的估计方法。例如，可以使用 Callaway and Sant'Anna DID，将不同 rollout
+cohort 与尚未处理或从未处理的 county-cohort 进行比较，避免
+already-treated controls 问题。
+
+\subsubsection{Rollout
+时间可能存在选择性}\label{rollout-ux65f6ux95f4ux53efux80fdux5b58ux5728ux9009ux62e9ux6027}
+
+另一个关键问题是 Head Start rollout
+时间是否可以被视为外生。现实中，政策项目的推广通常不是完全随机的。某些
+county
+可能因为贫困程度更高、地方政府能力更强、社区组织更活跃、政治支持更强或教育资源更缺乏而更早获得
+Head Start 项目。如果这些因素同时影响儿童长期教育和经济结果，那么
+rollout 时间就可能与未处理潜在结果趋势相关。
+
+这与本文 DGP 中的场景 B 和场景 C 对应。场景 B
+中，处理时点与可观测协变量相关；场景 C
+中，处理时点进一步受到不可观测因素影响。Monte Carlo 结果显示，在场景 B
+中，PSM-DID 和 CSDID 可以显著降低偏误；但在场景 C 中，即使 CSDID
+也产生严重偏误。这说明，如果 rollout 选择性主要来自可观测 county
+特征，匹配和协变量调整有帮助；但如果 rollout
+选择性来自不可观测趋势，估计方法本身无法完全解决问题。
+
+对于 Bailey, Sun and Timpe (2021)
+而言，关键问题不是简单地问``有没有固定效应''，而是要问：较早获得 Head
+Start 的 county
+如果没有项目，其长期教育和经济趋势是否会与较晚获得项目或未获得项目的
+county 相同？如果答案不确定，就需要通过事件研究图、placebo
+tests、处理前趋势检验和丰富的地区特征控制来增强识别可信度。
+
+\subsubsection{长期结果容易受到其他政策和环境变化影响}\label{ux957fux671fux7ed3ux679cux5bb9ux6613ux53d7ux5230ux5176ux4ed6ux653fux7b56ux548cux73afux5883ux53d8ux5316ux5f71ux54cd}
+
+该论文研究成年后的长期结果，而从儿童早期到成年之间可能经历十几年甚至更长时间。在这段时间里，个体所在地区可能经历其他教育改革、福利政策变化、劳动力市场冲击、产业结构变化、人口迁移和学校质量变化。如果这些变化与
+Head Start rollout 时间相关，那么估计结果可能混合了 Head Start
+本身和其他地区长期变化的影响。
+
+例如，较早引入 Head Start 的 county
+可能同时也是更积极推进其他反贫困项目或教育项目的地区。如果这些项目共同改善儿童长期结果，那么仅将长期结果差异归因于
+Head Start 可能会高估其独立影响。相反，如果较早 rollout
+地区在后续经历经济衰退或学校质量下降，那么 Head Start
+的真实效果也可能被低估。
+
+这说明，长期政策评估不仅需要处理短期政策引入时点的选择性，也需要考虑长期暴露期间其他政策和环境变化的干扰。因此，原文可以通过控制其他同期政策、加入地区特定趋势、进行不同地区样本限制、考察迁移问题等方式增强解释可信度。
+
+\subsection{可以补充的现代 DID
+检验}\label{ux53efux4ee5ux8865ux5145ux7684ux73b0ux4ee3-did-ux68c0ux9a8c}
+
+结合本文大作业中的模拟结果，我认为 Bailey, Sun and Timpe (2021)
+可以从以下几个方面补充现代 DID
+检验。这些建议不是为了否定原文，而是为了使基于 staggered rollout
+的识别更透明、更稳健。
+
+\subsubsection{补充 Callaway and Sant'Anna
+DID}\label{ux8865ux5145-callaway-and-santanna-did}
+
+首先，可以按照 county rollout cohort 构造 group-time ATT，即
+\(ATT(g,t)\)。这种方法的优势是分别估计不同 rollout cohort
+在不同时期的处理效应，而不是直接将所有 cohort 和时期压缩成一个 TWFE
+系数。
+
+在 Head Start 的语境下，\(g\) 可以理解为某个 county 首次获得 Head Start
+的时间，\(t\) 可以理解为某个出生 cohort 或结果观测时期。通过估计
+\(ATT(g,t)\)，研究者可以观察早 rollout county 和晚 rollout county
+的效应是否不同，也可以观察项目影响是否随时间逐渐显现。
+
+如果 CSDID 的结果与原文主结果方向一致且大小相近，那么说明原文结论对现代
+DID 方法稳健。如果 CSDID 结果明显小于或不同于 TWFE
+结果，则说明原文主结果可能受到交错处理下错误比较或异质效应的影响。
+
+\subsubsection{补充 Sun and Abraham
+事件研究图}\label{ux8865ux5145-sun-and-abraham-ux4e8bux4ef6ux7814ux7a76ux56fe}
+
+其次，可以使用 Sun and Abraham
+方法绘制事件研究图。事件研究图在该论文中尤其重要，因为它不仅可以检验处理前趋势，也可以展示政策影响的动态路径。
+
+在处理前部分，重点观察 lead 系数是否接近 0。如果 rollout 前早处理 county
+和晚处理 county
+已经存在明显不同趋势，那么平行趋势假设就会受到质疑。在处理后部分，重点观察
+lag 系数如何变化。如果 Head Start
+的影响是逐渐积累的，那么处理后系数可能随时间逐步增加；如果短期影响衰退，则处理后系数可能下降；如果长期影响主要体现在教育转折点，则可能在特定年龄或特定结果上出现更明显的变化。
+
+与传统 TWFE event study 相比，Sun and Abraham
+方法能够更好处理交错处理下的 cohort-specific event-time
+effects。因此，对于 Head Start 这种 staggered rollout 研究，Sun and
+Abraham 事件研究图会比传统事件研究图更可信。
+
+\subsubsection{补充匹配 DID 或加权
+DID}\label{ux8865ux5145ux5339ux914d-did-ux6216ux52a0ux6743-did}
+
+第三，可以根据处理前 county 特征进行匹配或加权，再进行 DID 估计。Head
+Start rollout 可能与 county
+的贫困率、人口结构、教育资源、地方财政能力和政治支持有关。如果这些特征同时影响长期教育结果，那么直接比较早
+rollout 和晚 rollout county 可能存在可观测选择偏误。
+
+本文 Monte Carlo 场景 B 表明，当处理分配与可观测协变量相关时，PSM-DID
+明显优于 TWFE。在场景 B 中，TWFE 的 Bias 为 0.392，而同期 PSM-DID 的
+Bias 仅为
+0.004。这说明，如果选择性主要来自可观测变量，匹配方法可以显著改善估计表现。
+
+因此，原文可以补充基于处理前 county 特征的匹配 DID 或加权
+DID。例如，可以将早 rollout county
+与处理前贫困率、人口规模、教育资源和经济趋势相似的晚 rollout 或
+never-treated county 进行比较。这样能够增强处理组和控制组的可比性。
+
+\subsubsection{报告 cohort-specific
+ATT}\label{ux62a5ux544a-cohort-specific-att}
+
+第四，可以报告 cohort-specific
+ATT。总体平均效应虽然便于总结，但可能掩盖重要异质性。对于 Head Start
+这样的政策，不同 rollout 时期、不同地区和不同出生 cohort
+的效果可能不同。
+
+如果早期 rollout cohort
+的效应显著更大，可能说明项目首先进入了最需要干预的地区，或者早期项目资源更集中。如果晚期
+rollout cohort 的效应更大，可能说明项目执行质量随时间改善。若不同 cohort
+效应差异不大，则说明政策效果具有较强外部有效性。
+
+因此，cohort-specific ATT 不只是稳健性检验，也能帮助解释政策效果的来源。
+
+\subsubsection{加强 placebo test
+和机制检验}\label{ux52a0ux5f3a-placebo-test-ux548cux673aux5236ux68c0ux9a8c}
+
+第五，可以进一步补充 placebo test。例如，可以检验 Head Start rollout
+是否影响理论上不应受影响的年龄组、结果变量或处理前 cohort。如果在处理前
+cohort
+或不相关结果上也出现显著影响，则说明估计可能捕捉到其他地区趋势，而不是
+Head Start 本身。
+
+此外，还可以加强机制检验。Head Start
+影响成年教育结果的渠道可能包括入学准备、特殊教育需求、留级概率、初高中教育路径、大学申请和经济压力等。如果能够展示部分中间结果的变化，就能更好解释长期结果产生的机制。
+
+\subsection{与本文 Monte Carlo
+结果的联系}\label{ux4e0eux672cux6587-monte-carlo-ux7ed3ux679cux7684ux8054ux7cfb}
+
+本文的 Monte Carlo 结果可以帮助理解 Bailey, Sun and Timpe (2021)
+这类政策评估研究可能面临的方法问题。
+
+首先，场景 A
+表明，当处理分配近似随机、平行趋势成立且处理效应同质时，TWFE 和现代 DID
+方法都可以较好恢复真实 ATT。这对应理想政策实验环境。如果 Head Start
+rollout 可以被认为近似随机，并且不同 county 在处理前趋势相似，那么传统
+DID 的结果就更有可信度。
+
+其次，场景 B 表明，如果处理时点与可观测协变量相关，传统 TWFE
+可能产生明显偏误，而匹配 DID 和控制协变量的 CSDID
+可以显著改善估计表现。这对应 Head Start rollout 可能与 county
+可观测特征相关的情况。例如，如果更贫困或行政能力更强的 county 更早获得
+Head Start，研究者就需要通过匹配、加权或协变量调整提高可比性。
+
+再次，场景 C 表明，如果处理时点与不可观测时变因素相关，那么无论是
+TWFE、匹配 DID 还是 CSDID，都可能无法完全消除偏误。这一点对 Head Start
+研究尤其重要，因为地方政治能力、社区动员能力和教育环境变化等因素可能难以完全观测。如果这些因素同时影响
+rollout 和长期教育结果，那么估计仍然可能有偏。
+
+最后，场景 D 表明，在动态处理效应和 cohort 异质性存在时，传统 TWFE
+可能出现系统性偏误。Head Start 的长期影响几乎必然具有动态性，也可能存在
+cohort 和地区异质性。因此，不能只依赖一个总体 TWFE 系数，而应补充
+CSDID、Sun and Abraham event study 和 cohort-specific ATT。
+
+因此，本文的 Monte Carlo 结果为评价 Bailey, Sun and Timpe (2021)
+提供了一个清晰框架：如果 rollout 近似随机且效应同质，传统 DID
+可以表现良好；如果 rollout
+与可观测特征相关，匹配和协变量调整很重要；如果存在不可观测时变混淆，任何
+DID 方法都需要谨慎解释；如果存在动态效应和 cohort 异质性，现代 DID
+方法比传统 TWFE 更合适。
+
+\subsection{总体评价}\label{ux603bux4f53ux8bc4ux4ef7}
+
+总体而言，Bailey, Sun and Timpe (2021) 是一篇非常重要的 Head Start
+长期效果评估论文。它的研究问题具有重大政策意义，数据质量较高，结果关注长期人力资本和经济自立能力，并且利用了
+Head Start rollout 和年龄 cutoff
+所带来的准实验变化。该论文的结论支持了公共学前教育项目可能具有长期社会回报的观点。
+
+但是，从现代 DID
+和交错处理方法的角度看，该类研究仍需要特别关注四个问题：第一，处理效应是否动态变化；第二，不同
+rollout cohort 的效果是否异质；第三，控制组是否真正处于 clean untreated
+状态；第四，rollout 时间是否与可观测或不可观测的地区趋势相关。
+
+这些问题并不意味着原文结论一定不可靠，而是说明基于 staggered rollout
+的政策评估需要更加透明地定义因果参数和比较对象。传统 TWFE
+的一个局限是，它常常给出一个看似简洁的平均效应，但这个平均效应可能混合了多个
+cohort、多个 event time
+和多个不同性质的比较。在政策效果具有长期性和异质性的情况下，这种单一系数可能不足以支撑完整的政策解释。
+
+因此，如果从现代 DID
+角度进一步增强该论文，我认为最重要的补充不是简单加入更多控制变量，而是重新组织估计目标：先估计
+\(ATT(g,t)\)，再展示动态效应路径和 cohort-specific
+effects，最后再汇总总体平均效应。这样既能保留原文对长期政策效果的关注，也能使因果解释更加清晰。
+
+与本文大作业的模拟结果相结合，可以得到一个更一般的启示：现代 DID
+方法不是为了机械替代
+TWFE，而是为了让研究者更清楚地回答``谁与谁比较''\,``在哪个时期比较''\,``估计的是哪个处理效应''这些问题。对于
+Head Start
+这类分阶段推广、长期影响复杂、潜在异质性很强的政策，这种透明性尤其重要。
+
+\section{结论}\label{ux7ed3ux8bba}
+
+本文围绕交错处理设定下不同 DID 估计方法的表现进行了 Monte Carlo
+模拟研究。根据作业要求，本文首先构造了一个多期面板 DGP，设定 \(N=500\)
+个个体和 \(T=10\) 个时期，并设置三个处理批次 \(G_i=4,6,8\) 以及一组
+never-treated 个体。DGP 包含连续协变量 \(X_1\)、二元协变量
+\(X_2\)、个体固定效应、共同时间趋势、可观测趋势异质性和不可观测时变混淆因素。为了系统考察估计方法的适用条件，本文设计了四个场景：基准随机处理情形、可观测选择偏误情形、不可观测时变混淆情形，以及动态处理效应和
+cohort 异质性情形。
+
+在估计方法方面，本文比较了传统 TWFE、同期 PSM-DID、滚动
+PSM-DID、SCM、Callaway and Sant'Anna DID 以及 Sun and Abraham
+事件研究估计。其中，TWFE 作为传统基准方法；同期 PSM-DID 和滚动 PSM-DID
+作为匹配类方法；SCM 作为补充方法展示和条件讨论；CSDID 和 Sun-Abraham
+方法作为现代 DID 估计方法。Monte Carlo 主模拟重复 1000 次，并报告
+Bias、RMSE、Median Absolute Error、Coverage、Mean SE、Monte Carlo
+SD、偏误-方差权衡图和事件研究图。
+
+本文的模拟结果可以概括为以下几点。
+
+第一，在场景 A
+中，处理分配随机、平行趋势成立且处理效应同质，各类方法整体表现较好。TWFE、PSM-DID
+和 CSDID 的 Bias 均接近 0，覆盖率也接近
+0.95。这说明在理想识别环境下，传统 DID 和现代 DID 方法都可以较好恢复真实
+ATT。
+
+第二，在场景 B 中，处理分配与可观测协变量相关，传统 TWFE
+出现明显正向偏误。相比之下，同期 PSM-DID 和 CSDID 的 Bias
+明显较小，说明当选择性主要来自可观测协变量时，匹配方法和协变量调整能够显著改善估计表现。这也说明，在实际研究中，如果处理时点与地区或个体特征相关，不能简单依赖无条件
+TWFE，而应当考虑匹配、加权或控制协变量的现代 DID 方法。
+
+第三，在场景 C
+中，处理分配受到不可观测时变因素影响，且该因素同时影响未处理结果趋势。在该场景下，TWFE、滚动
+PSM-DID 和 CSDID 均出现较大偏误，覆盖率也显著下降。这说明现代 DID
+方法和匹配方法虽然可以改善交错处理和可观测选择问题，但不能自动解决不可观测时变混淆。换言之，估计方法的改进不能替代可信的研究设计和平行趋势假设。
+
+第四，在场景 D 中，处理效应具有动态衰减和 cohort 异质性。传统 TWFE
+出现明显偏误，覆盖率为 0；而 CSDID 和滚动 PSM-DID
+能够较好恢复所有处理后时期上的平均 ATT。Sun and Abraham
+事件研究图也能够较好展示处理效应随事件时间逐渐衰减的动态路径。这说明在交错处理和异质处理效应存在时，现代
+DID 方法比传统 TWFE 更适合估计清晰的因果参数。
+
+第五，从推断有效性看，点估计接近真实 ATT 并不必然意味着推断可靠。滚动
+PSM-DID 在多个场景中 Bias 较小，但 Mean SE 明显低于 Monte Carlo
+SD，导致覆盖率偏低。这说明对于需要合并多个 cohort-period
+估计结果的方法，标准误构造非常关键。如果标准误低估真实波动，即使点估计较准，置信区间也可能不可靠。
+
+本文的理论推导进一步说明，Callaway and Sant'Anna DID
+的核心优势在于估计组别-时间处理效应 \(ATT(g,t)\)，并使用 never-treated
+或 not-yet-treated 单位构造 clean comparison。相比传统 TWFE，CSDID
+不会将 already-treated units
+错误用作控制组，因此在存在交错处理、动态效应和 cohort
+异质性时具有更清晰的因果解释。
+
+本文最后对 Bailey, Sun and Timpe (2021) 关于 Head Start
+长期影响的研究进行了批判性评价。该论文研究问题重要、数据质量高，并且利用
+Head Start 在不同 county 的 staggered rollout 识别长期政策效果。但从现代
+DID 角度看，该类研究仍需特别关注处理效应动态性、cohort 异质性、clean
+control 的选择以及 rollout 时间的外生性。结合本文 Monte Carlo
+结果可以看出，对于 staggered rollout 类型的政策评估，仅报告传统 TWFE
+结果是不够的，更完整的研究设计应当结合 CSDID、Sun and Abraham
+事件研究、匹配 DID、cohort-specific ATT 和 placebo tests。
+
+总体而言，本文的核心结论是：不同估计方法没有绝对优劣，方法选择必须服务于具体识别环境。TWFE
+在理想条件下可以表现良好，但在交错处理、动态效应和选择性处理存在时可能产生严重偏误；匹配方法可以缓解可观测选择问题，但依赖可观测变量充分控制；CSDID
+和 Sun-Abraham
+方法可以更好处理交错处理和异质效应，但仍然依赖平行趋势假设；SCM
+适合处理单位较少、处理前路径信息丰富且 donor pool
+质量较高的场景。因果推断的关键不只是选择更复杂的估计器，而是明确处理效应参数、构造合适的比较组，并认真检验识别假设。
+
+\section{AI 使用声明}\label{ai-ux4f7fux7528ux58f0ux660e}
+
+本作业在完成过程中使用了 AI 工具进行辅助。使用 AI
+的目的主要是帮助我理解作业要求、整理 notebook
+结构、解释计量方法思路、检查 Stata 代码逻辑、改写部分 Markdown
+表述，以及协助排查代码运行和图形输出问题。AI
+工具仅作为辅助工具使用，最终的 DGP
+设定、代码运行、结果判断、内容取舍和最终版本整理均由我本人完成。
+
+\subsection{使用的 AI 工具}\label{ux4f7fux7528ux7684-ai-ux5de5ux5177}
+
+本文主要使用了以下 AI 工具：
+
+\begin{itemize}
+\tightlist
+\item
+  ChatGPT：用于辅助理解作业要求、设计作业结构、解释 DID、matching 和
+  Monte Carlo 相关概念，辅助撰写 Markdown 说明，检查 Stata
+  代码逻辑，并排查运行错误。
+\item
+  在部分问题中，也参考了 AI 对 Stata 报错和 notebook
+  图形渲染问题的解释与修改建议。
+\end{itemize}
+
+\subsection{关键 prompt 示例}\label{ux5173ux952e-prompt-ux793aux4f8b}
+
+在完成本作业过程中，我向 AI 提出过的关键 prompt 包括：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ``请根据大作业要求，帮我总结我需要完成的顺序与框架。''
+\item
+  ``请帮我设计一个满足交错处理要求的 DGP，包括四个场景 A/B/C/D。''
+\item
+  ``请帮我解释 Bias、RMSE、Median Absolute Error、Coverage、Mean SE 和
+  Monte Carlo SD 的含义。''
+\item
+  ``请帮我根据 Monte Carlo 结果整理覆盖率表和偏误-方差权衡图。''
+\item
+  ``请帮我写 Callaway and Sant'Anna 的 ATT(g,t) 识别公式推导。''
+\item
+  ``请帮我从现代 DID 的角度批判 Bailey, Sun, and Timpe (2021)
+  这篇文章，供我参考。''
+\end{enumerate}
+
+\subsection{AI
+输出内容与我的修改}\label{ai-ux8f93ux51faux5185ux5bb9ux4e0eux6211ux7684ux4feeux6539}
+
+AI 输出的内容主要包括代码框架、Markdown
+初稿、方法解释和报错排查建议。对于这些内容，我没有直接原封不动使用，而是进行了以下修改：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  根据作业要求重新调整了整体结构，使其符合 DGP 设计、估计方法、Monte
+  Carlo 比较、统计性质验证、理论推导和论文批判性评价的顺序。
+\item
+  将样本规模、时间期数和 Monte Carlo
+  次数统一设定为本作业最终版本中的参数，即
+  \(N=500\)、\(T=10\)、\(R=1000\)。
+\item
+  根据实际运行情况修改了 Stata
+  代码，例如去掉无法识别的命令、调整图形导出方式、修复变量重复定义和路径问题。
+\item
+  对 AI 生成的 Markdown 文字进行了筛选和改写，使其更符合本文的 DGP
+  设定和实际模拟结果。
+\item
+  对估计方法的选择进行了人工判断。例如，最终没有将 SCM 纳入 Monte Carlo
+  主模拟，而是作为单次方法展示和条件讨论。
+\item
+  对所有代码进行了实际运行，并根据运行结果调整了表格、图形和解释文字。
+\item
+  将最终 notebook
+  中的中文说明、变量命名、结果解释和章节安排进行了统一整理。
+\end{enumerate}
+
+\subsection{最终版本中由本人完成的内容}\label{ux6700ux7ec8ux7248ux672cux4e2dux7531ux672cux4ebaux5b8cux6210ux7684ux5185ux5bb9}
+
+最终版本中，以下内容由我本人完成或最终确认：
+
+\begin{itemize}
+\tightlist
+\item
+  DGP 场景设定和参数选择；
+\item
+  Stata 代码的实际运行和调试；
+\item
+  Monte Carlo 模拟结果的生成；
+\item
+  表格和图形的最终输出；
+\item
+  对模拟结果的判断和解释；
+\item
+  是否保留或删除某些方法和代码的取舍；
+\item
+  最终 notebook 的结构整理和提交版本确认。
+\end{itemize}
+
+因此，AI
+在本作业中主要承担辅助解释、代码建议和文字润色的作用；最终提交内容由我本人理解、检查、修改和确认。
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+Abadie, Alberto, Alexis Diamond, and Jens Hainmueller. 2010. ``Synthetic
+Control Methods for Comparative Case Studies: Estimating the Effect of
+California's Tobacco Control Program.'' \emph{Journal of the American
+Statistical Association}, 105(490): 493--505.
+
+Bailey, Martha J., Shuqiao Sun, and Brenden Timpe. 2021. ``Prep School
+for Poor Kids: The Long-Run Impacts of Head Start on Human Capital and
+Economic Self-Sufficiency.'' \emph{American Economic Review}, 111(12):
+3963--4001.
+
+Callaway, Brantly, and Pedro H. C. Sant'Anna. 2021.
+``Difference-in-Differences with Multiple Time Periods.'' \emph{Journal
+of Econometrics}, 225(2): 200--230.
+
+Goodman-Bacon, Andrew. 2021. ``Difference-in-Differences with Variation
+in Treatment Timing.'' \emph{Journal of Econometrics}, 225(2): 254--277.
+
+Rosenbaum, Paul R., and Donald B. Rubin. 1983. ``The Central Role of the
+Propensity Score in Observational Studies for Causal Effects.''
+\emph{Biometrika}, 70(1): 41--55.
+
+Sun, Liyang, and Sarah Abraham. 2021. ``Estimating Dynamic Treatment
+Effects in Event Studies with Heterogeneous Treatment Effects.''
+\emph{Journal of Econometrics}, 225(2): 175--199.
+
+
+
+
+\end{document}
